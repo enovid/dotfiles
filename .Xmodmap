@@ -1,0 +1,8 @@
+! map capslock to Control_L
+clear lock
+clear control
+keycode 66 = Control_L
+! map return to Control_R
+keycode 250 = Return
+keycode 36 = Control_R
+add control = Control_L Control_R
