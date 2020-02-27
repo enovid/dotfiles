@@ -137,6 +137,3 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
-
-# Track dotfiles: https://www.atlassian.com/git/tutorials/dotfiles
-alias config='/usr/bin/git --git-dir=/home/enovid/.cfg/ --work-tree=/home/enovid'
