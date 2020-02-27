@@ -1,0 +1,1308 @@
+"""""""""""""
+"  PLUGINS  "
+"""""""""""""
+"" vim-plug plugin manager
+call plug#begin('~/.vim/plugged')
+
+"" Experimental
+Plug 'vimwiki/vimwiki', {'branch': 'dev'}
+let g:vimwiki_ext2syntax = {}
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'LukeSmithxyz/vimling' 
+"Plug 'szymonmaszke/vimpyter'
+"Plug 'wellle/context.vim'
+"let g:context_enabled = 0
+"Plug 'camspiers/animate.vim'
+"Plug 'camspiers/lens.vim'
+"let g:lens#animate = 0
+Plug 'lambdalisue/suda.vim'
+let g:suda_smart_edit = 1
+
+"" Completion
+""" nvim-lsp
+"Plug 'neovim/nvim-lsp'
+""" ultisnips
+"Plug 'SirVer/ultisnips', has('nvim') ? { 'on': [] } : {}
+Plug 'SirVer/ultisnips'
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
+let g:UltiSnipsUsePythonVersion = 3
+let g:UltiSnipsExpandTrigger = '<c-;>'
+let g:UltiSnipsJumpForwardTrigger = '<c-]>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-[>'
+""" coc.nvim
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_filetype_map = {
+        \ 'ipynb': 'python'
+        \ }
+""" auto pair brackets
+Plug 'tmsvg/pear-tree'
+let g:pear_tree_smart_openers = 1
+let g:pear_tree_smart_closers = 1
+let g:pear_tree_smart_backspace = 1
+"" Extend Basic Vim Functionality
+""" Cheatsheet for mappings
+Plug 'lifepillar/vim-cheat40'
+""" Search
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'haya14busa/incsearch-easymotion.vim'
+Plug 'nelstrom/vim-visual-star-search'
+""" AutoSave 
+" disabled by default, run :AutoSaveToggle to enable/disable it.
+Plug 'vim-scripts/vim-auto-save'
+let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+""" Auto surround
+Plug 'machakann/vim-sandwich'
+""" Auto comment
+Plug 'scrooloose/nerdcommenter'
+let g:NERDCustomDelimiters = {
+    \ 'markdown': { 'left': '#' },
+    \ 'pandoc': { 'left': '#' }
+\ }
+""" Align multiple lines
+Plug 'junegunn/vim-easy-align'
+""" Copy and paste
+"Plug 'idanarye/vim-yankitute'
+"Plug 'inkarkat/vim-UnconditionalPaste'
+""" Movement inside buffer
+Plug 'easymotion/vim-easymotion'
+""" More textobjects
+Plug 'wellle/targets.vim'
+let g:targets_nl = ['n', 'N']
+Plug 'michaeljsmith/vim-indent-object'
+""" Repeatability
+Plug 'tpope/vim-repeat'
+Plug 'vim-scripts/visualrepeat'
+""" Move lines
+Plug 'matze/vim-move'
+let g:move_key_modifier = 'C'
+""" Linewise diff
+Plug 'AndrewRadev/linediff.vim'
+""" Resize windows
+Plug 'simeji/winresizer'
+let g:winresizer_start_key = '<C-F>'
+let g:winresizer_vert_resize = 10
+
+"" Filetype Specific
+""" Markdown and Latex
+" vim-pandoc-markdown-preview executes pandoc after 
+" every bufferwrite `:w` :StartMdPreview (asyncrun is dependency)
+Plug 'enovid/vim-pandoc-markdown-preview' | Plug 'skywind3000/asyncrun.vim'
+let g:md_pdf_viewer="open -a Preview"
+let g:md_pdf_engine="xelatex"
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+let g:mkdp_auto_close = 0
+"let g:mkdp_markdown_css = '/Users/enovid/Documents/MarkdownCSS/nord.css'
+Plug 'dkarter/bullets.vim'
+""" Pandoc
+Plug 'vim-pandoc/vim-pandoc'
+let g:pandoc#keyboard#use_default_mappings = 0
+let g:pandoc#folding#level = 100
+let g:pandoc#folding#fdc = 0
+let g:pandoc#formatting#equalprg = ""
+let g:pandoc#spell#enabled = 0
+let g:pandoc#hypertext#use_default_mappings = 0
+Plug 'vim-pandoc/vim-pandoc-syntax'
+let g:pandoc#syntax#codeblocks#embeds#langs = ["python"]
+let g:pandoc#syntax#conceal#use = 0
+""" Python syntax highlight
+Plug 'Guzzii/python-syntax'
+let g:python_highlight_indent_errors = 0
+let g:python_highlight_space_errors = 0
+let g:python_highlight_all = 1
+"" Fuzzy Finding
+""" fzf.vim
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+let g:fzf_command_prefix = 'Fzf'
+""" fzf-preview.vim
+Plug 'yuki-ycino/fzf-preview.vim'
+
+""" fuzzy notes
+Plug 'alok/notational-fzf-vim'
+let g:nv_search_paths = ['~/notes']
+"" Programming
+""" Execute output to buffer
+Plug 'fboender/bexec'
+let g:bexec_interpreter="/usr/local/bin/python3"
+let g:bexec_splitdir='hor'
+"let g:bexec_splitsize='40'
+let g:bexec_splitsize=''
+let g:bexec_outputscroll=1
+""" File structure outline
+Plug 'vim-voom/VOoM'
+""" REPL in buffer
+Plug 'metakirby5/codi.vim'
+""" Set working directory to the project root
+Plug 'airblade/vim-rooter'
+let g:rooter_silent_chdir = 1
+let g:rooter_change_directory_for_non_project_files = 'current'
+""" Print variables for debugging
+Plug 'meain/vim-printer'
+let g:vim_printer_print_below_keybinding = '<leader>i'
+let g:vim_printer_print_above_keybinding = '<leader>I'
+
+let g:vim_printer_items = {
+      \ 'python': "print(f'{$}: \{{$}\}')",
+      \ }
+
+"let g:vim_printer_items = {
+      "\ 'python': 'ic({$})',
+      "\ }
+""" Wrap and unwrap arguments
+Plug 'FooSoft/vim-argwrap'
+"" Look and Feel
+""" smooth scroll
+Plug 'psliwka/vim-smoothie'
+""" no-distract mode
+Plug 'junegunn/goyo.vim'
+let g:goyo_linenr = 1
+"let g:goyo_width = 80+5
+let g:goyo_width = 120
+let g:goyo_height = '100%'
+Plug 'junegunn/limelight.vim'
+let g:limelight_paragraph_span = 1
+Plug 'amix/vim-zenroom2'
+""" highlight yank
+Plug 'machakann/vim-highlightedyank'
+let g:highlightedyank_highlight_duration = 500
+""" hilight color codes
+Plug 'ap/vim-css-color'
+""" colorscheme management
+Plug 'lifepillar/vim-colortemplate'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-colorscheme-switcher'
+let g:colorscheme_switcher_exclude_builtins = 1
+Plug 'Taverius/vim-colorscheme-manager'
+let g:colorscheme_manager_define_mappings = 0
+Plug 'kergoth/vim-hilinks'
+""" colorschemes
+Plug 'smallwat3r/efficient'
+Plug 'joshdick/onedark.vim'
+Plug 'kocakosm/hilal'
+Plug 'chriskempson/base16-vim'
+Plug 'sainnhe/vim-color-forest-night'
+Plug 'sainnhe/vim-color-desert-night'
+Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'tyrannicaltoucan/vim-quantum'
+Plug 'andreypopp/vim-colors-plain'
+Plug 'reedes/vim-colors-pencil'
+Plug 'ajh17/Spacegray.vim'
+Plug 'wolverian/minimal'
+Plug 'mhartington/oceanic-next'
+Plug 'ayu-theme/ayu-vim'
+Plug 'w0ng/vim-hybrid'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'arcticicestudio/nord-vim'
+let g:nord_uniform_diff_background = 1
+let g:nord_uniform_status_lines = 0
+Plug 'altercation/vim-colors-solarized'
+Plug 'junegunn/seoul256.vim'
+Plug 'vim-scripts/summerfruit256.vim'
+
+Plug 'nanotech/jellybeans.vim'
+Plug 'cideM/yui'
+Plug 'rj-white/vim-colors-paramountblue'
+Plug 'lifepillar/vim-solarized8'
+Plug 'arzg/vim-plan9'
+Plug 'arzg/vim-mayanfog'
+Plug 'nightsense/cosmic_latte'
+Plug 'logico-software/typewriter'
+Plug 'enovid/inkstained-vim'
+Plug 'yuttie/snowy-vim'
+Plug 'kadekillary/subtle_solo'
+Plug 'sainnhe/vim-color-vanilla-cake'
+Plug 'sainnhe/vim-color-fairy-garden'
+Plug 'rakr/vim-two-firewatch'
+Plug 'vim-scripts/darktango.vim'
+
+Plug 'fxn/vim-monochrome'
+Plug 'Nequo/vim-allomancer'
+Plug 'nightsense/snow'
+
+Plug 'nightsense/seabird'
+Plug 'kristiandupont/shades-of-teal'
+Plug 'ajgrf/sprinkles'
+Plug 'zefei/cake16'
+Plug 'cormacrelf/vim-colors-github'
+let g:github_colors_soft = 0
+Plug 'vim-scripts/Cleanroom'
+Plug 'kadekillary/subtle_solo'
+Plug 'yuttie/hydrangea-vim'
+Plug 'jordwalke/flatlandia'
+
+Plug 'Badacadabra/vim-archery'
+Plug 'enovid/vim-colors-meh'
+
+Plug 'lifepillar/vim-gruvbox8'
+Plug 'cocopon/iceberg.vim'
+Plug 'arzg/vim-corvine'
+Plug 'ajgrf/parchment'
+Plug 'doums/darcula'
+Plug 'arzg/vim-substrata'
+let g:substrata_italic_comments = 0
+let g:substrata_italic_functions = 0
+Plug 'whatyouhide/vim-gotham'
+Plug 'vim-scripts/peaksea'
+Plug 'jacoborus/tender.vim'
+Plug 'wolf-dog/nighted.vim'
+Plug 'eemed/noxtra'
+Plug 'AlessandroYorba/Breve'
+Plug 'arzg/vim-oldbook8'
+Plug 'tek256/simple-dark'
+
+Plug 'atelierbram/Base2Tone-vim'
+Plug 'jonathanfilip/vim-lucius'
+Plug 'camgunz/amber'
+
+
+"" Unused
+"Plug 'alexherbo2/kakoune.vim'
+""" Variable naming with Codelf
+"Plug 'voldikss/vim-codelf'
+
+call plug#end()
+
+
+""""""""""""""""""""""
+"  PLUGIN SETTINGS   "
+""""""""""""""""""""""
+"" coc.nvim
+
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+" never show signcolumns
+set signcolumn=no
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader><leader>f  <Plug>(coc-format-selected)
+nmap <leader><leader>f  <Plug>(coc-format-selected)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+"
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call   CocAction('fold', <f-args>)
+
+" Create mappings for function text object, requires document symbols feature of languageserver.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Make <cr> for confirm completion https://github.com/neoclide/coc.nvim/wiki/Using-snippets#snippet-completion
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
+                                           \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+"nnoremap <expr><C-f> coc#util#has_float() ? coc#util#float_scroll(1) : "\<C-f>"
+"nnoremap <expr><C-b> coc#util#has_float() ? coc#util#float_scroll(0) : "\<C-b>"
+
+
+"" BExec
+
+"close BExec_output window
+nnoremap <silent> <Leader>g :BexecCloseOut<CR>
+
+"" colorscheme manager
+
+" Manage blacklist
+"inoremap <silent> <F12> <C-O>:BlacklistAddColorScheme<CR>
+"nnoremap <silent> <F12> :BlacklistAddColorScheme<CR>
+"inoremap <silent> <S-12> <C-O>:BlacklistRemColorScheme<CR>
+"nnoremap <silent> <S-12> :BlacklistRemColorScheme<CR>
+
+" Show name of current colorscheme
+nnoremap <F9> :colorscheme<CR>
+nnoremap <S-Down> :colorscheme<CR>
+
+" Cycle through colorschemes
+nnoremap <silent> <S-Right> :NextColorScheme<CR>\|:colorscheme<CR>
+nnoremap <silent> <S-Left> :PrevColorScheme<CR>\|:colorscheme<CR>
+nnoremap <S-Up> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+
+"" fzf-preview.vim
+"nnoremap <silent> <leader>h :FzfPreviewOldFiles<CR>
+
+"" fzf
+""" Mappings
+" Shortcut to search file contents with fzf and rg: nnoremap <C-J> :Rg<CR>
+"nnoremap <silent> <leader>i :call fzf#vim#files('.', {'options': '--prompt ""'})<CR>
+"nnoremap <silent> <leader>I :call fzf#vim#files('~', {'options': '--prompt ""'})<CR>
+nnoremap <silent> <leader>/ :cd %:h\|FzfRg<CR>
+"nnoremap <silent> <leader>o :FzfFiles <C-r>=expand("%:h")<CR>/<CR>
+nnoremap <silent> <leader>o :FzfFiles<CR>
+nnoremap <silent> <leader>O :FzfFiles ~<CR>
+nnoremap <silent> <leader>h :FzfHistory<CR>
+nnoremap <silent> <leader>H <ESC>:FzfHelptags<CR>
+nnoremap <silent> <leader>; :FzfHistory:<CR>
+nnoremap <silent> <leader>f :FzfBuffers<CR>
+nnoremap <silent> <leader>m :FzfMaps<CR>
+nnoremap <silent> <leader>L :FzfBLines<CR>
+nnoremap <silent> <leader>" :FzfMarks<CR>
+noremap  <silent> <leader>: :FzfCommands<CR>
+nnoremap <silent> <leader>t :FzfColors<CR>
+
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+""" Colors
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+
+"" ultiSnips
+
+"   Allow :Snippets command to search snippet descriptions.
+command! -bar -bang Snippets call fzf#vim#snippets({'options': '-n ..'}, <bang>0)
+nnoremap <C-S> :Snippets<CR>
+
+"" easymotion
+
+" Use uppercase target labels and type as a lower case
+let g:EasyMotion_use_upper = 1
+let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
+let g:EasyMotion_smartcase = 1
+
+" Move to line
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader><Leader>l <Plug>(easymotion-bd-jk)
+nmap <Leader><Leader>l <Plug>(easymotion-overwin-line)
+
+" Move to end of word
+map  <Leader>e <Plug>(easymotion-bd-e)
+map  <Leader>E <Plug>(easymotion-bd-E)
+
+" Jump to any two characters on any window
+nmap <Leader>s <Plug>(easymotion-overwin-f2)
+
+""" Unused
+
+" Move to word
+"map  <Leader>W <Plug>(easymotion-bd-w)
+"nmap <Leader>W <Plug>(easymotion-overwin-w)
+" Bidirectional & within line 't' & 'f' motions
+"omap t <Plug>(easymotion-bd-tl)
+"omap f <Plug>(easymotion-bd-fl)
+"map  <Leader>f <Plug>(easymotion-bd-f)
+"nmap <Leader>f <Plug>(easymotion-overwin-f)
+"map  <Leader>t <Plug>(easymotion-bd-t)
+
+"" haya14busa incsearch
+
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)zz
+map N  <Plug>(incsearch-nohl-N)zz
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
+" fuzzy search
+map z/ <Plug>(incsearch-fuzzy-/)
+map z? <Plug>(incsearch-fuzzy-?)
+map zg/ <Plug>(incsearch-fuzzy-stay)
+"map z/ <Plug>(incsearch-easymotion-/)
+"map z? <Plug>(incsearch-easymotion-?)
+"map zg/ <Plug>(incsearch-easymotion-stay)
+
+"" easyalign
+
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+"" notational-fzf-vim
+
+nnoremap <silent> <leader>a :NV<CR>
+
+"" goyo
+
+nnoremap <silent> <leader>z :Goyo<CR>
+nnoremap <silent> <leader>Z :Goyo 60-5<CR>
+
+function! s:goyo_enter()
+  set noshowmode
+  "set scrolloff=5
+endfunction
+function! s:goyo_leave()
+  set showmode
+  "set scrolloff=8
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+"" kakoune
+
+"nmap <Leader><CR> <Plug>(Kakoune)
+"vmap <Leader><CR> <Plug>(Kakoune)
+
+"" voom
+
+nnoremap <leader>V :Goyo!\|Voom python<CR>
+
+"" pear-tree
+
+imap <tab> <Plug>(PearTreeJump)
+imap <S-Enter> <Plug>(PearTreeExpand)
+
+"" limelight
+
+nnoremap <leader>l :Limelight!!<CR>
+" Use visual selection
+xmap <Leader>l <Plug>(Limelight)
+
+"" vim-hilinks
+
+map <Leader><Leader>H <Plug>HiLinkTrace
+map <Leader><Leader>h :HLT!<CR>
+
+"" vim-sandwich
+
+"disable s as recommended by vim-sandwich manual
+nmap s <Nop>
+xmap s <Nop>
+
+" delete the function surrounding 'args'  
+" e.g. object.method(args)
+let g:sandwich#magicchar#f#patterns = [
+\   {
+\     'header' : '\<\%(\h\k*\.\)*\h\k*',
+\     'bra'    : '(',
+\     'ket'    : ')',
+\     'footer' : '',
+\   },
+\ ]
+
+"" python motions
+
+" Location: autoload/pymode/motion.vim
+" Enable pymode motions e.g. aC iC aM iM
+let g:pymode_motion = 1
+
+"" vimwiki
+
+" global
+nmap <Leader><Leader>ww <Plug>VimwikiIndex
+nmap <Leader><Leader>wt <Plug>VimwikiTabIndex
+nmap <Leader><Leader>ws <Plug>VimwikiUISelect
+nmap <Leader><Leader>wi <Plug>VimwikiDiaryIndex
+nmap <Leader><Leader>w<Leader>w <Plug>VimwikiMakeDiaryNote
+nmap <Leader><Leader>w<Leader>t <Plug>VimwikiTabMakeDiaryNote
+nmap <Leader><Leader>w<Leader>y <Plug>VimwikiMakeYesterdayDiaryNote
+nmap <Leader><Leader>w<Leader>m <Plug>VimwikiMakeTomorrowDiaryNote
+
+" local
+nmap <Leader><Leader>w<Leader>i <Plug>VimwikiDiaryGenerateLinks
+nmap <Leader><Leader>wh <Plug>Vimwiki2HTML
+nmap <Leader><Leader>whh <Plug>Vimwiki2HTMLBrowse
+nmap <Leader><Leader>wn <Plug>VimwikiGoto
+nmap <Leader><Leader>wd <Plug>VimwikiDeleteLink
+nmap <Leader><Leader>wr <Plug>VimwikiRenameLink
+
+augroup vimwiki_mapping
+  autocmd!
+  autocmd FileType vimwiki nmap <buffer> <Leader>l <Plug>VimwikiToggleListItem
+  autocmd FileType vimwiki vmap <buffer> <Leader>l <Plug>VimwikiToggleListItem
+augroup END
+
+function! VimwikiLinkHandler(link)
+  " Use Vim to open external files with the 'vfile:' scheme.  E.g.:
+  "   1) [[vfile:~/Code/PythonProject/abc123.py]]
+  "   2) [[vfile:./|Wiki Home]]
+  let link = a:link
+  if link =~# '^vfile:'
+    let link = link[1:]
+  else
+    return 0
+  endif
+  let link_infos = vimwiki#base#resolve_link(link)
+  if link_infos.filename == ''
+    echomsg 'Vimwiki Error: Unable to resolve link!'
+    return 0
+  else
+    exe 'e ' . fnameescape(link_infos.filename)
+    return 1
+  endif
+endfunction
+
+"" codelf
+"nnoremap <silent> M :call codelf#start()<CR>
+
+"" argwrap
+nnoremap <silent> ,a :ArgWrap<CR>
+
+"" vimpyter
+autocmd Filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
+"autocmd Filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
+"autocmd Filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
+
+""""""""""""""""""""""
+"  GENERAL SETTINGS  "
+""""""""""""""""""""""
+set nocompatible              " be iMproved, required
+filetype plugin on
+
+" search
+set incsearch       " Find the next match as we type the search
+set hlsearch        " Highlight searches by default
+set ignorecase      " Ignore case when searching...
+set smartcase       " ...unless we type a capital
+
+" allow backspace to delete everything
+set backspace=indent,eol,start 
+
+" tabs
+set expandtab       " tabs are spaces
+set shiftwidth=4    " affects  >>, <<, and ==
+set softtabstop=4   " number of spaces in tab when editing
+" set tabstop=2     " number of visual spaces per TAB
+augroup tabsize_markdown
+  autocmd!
+  autocmd FileType markdown setlocal shiftwidth=2
+  autocmd FileType markdown setlocal softtabstop=2
+augroup END
+
+
+" tab-completion for all file-related tasks
+" searches down into subfolders
+set path+=**
+
+" Display all matching files when we tab complete
+" - Hit tab to :find by partial match
+" - Use * to make it fuzzy
+set wildmenu
+
+" Allow changing buffers without save
+set hidden 
+
+" show command as it's typed
+set showcmd
+
+" don't auto-insert first autocomplete result 
+set completeopt=menuone,noinsert
+
+" don't update the screen while executing non-typed commands e.g. macros
+set lazyredraw
+
+" keep cursor in same column when scrolling
+set nostartofline
+
+" disable line,col ruler in neovim
+set noruler
+
+" disable statusline except for splits
+set laststatus=2
+
+" Show line numbers
+set number
+
+" show linenumbers relative to currentline
+set relativenumber
+
+" make line number column more narrow
+set numberwidth=2
+
+" number of lines to alway show at top and bottom of buffer
+set scrolloff=1
+
+" size of command history
+set history=10000
+
+" always create new file in current file directory
+set autochdir
+
+" don't wrap lines
+set nowrap
+
+" persisent undo
+set undofile
+set undodir=~/.vim/undodir
+
+" open vertical split to the right
+set splitright
+
+"" GUI, cursor, font
+if has("gui_running")
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+    set guioptions-=r "remove right-hand scroll bar
+    set guioptions-=L "remove left-hand scroll bar
+    set guicursor+=n-v-c:blinkon0 "Disable blinking
+    set guicursor+=a:blinkon0 "Disable all blinking
+    set guifont=RobotoMono-Light:h15
+  endif
+endif
+
+" Cursor width
+"let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+"let &t_SR = "\<Esc>]50;CursorShape=2\x7" 
+"let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+
+"" Color support
+
+" Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
+"" Colorscheme
+"colorscheme nord
+
+""" LIGHT THEMES:
+"set t_Co=256
+"colorscheme plain
+"colorscheme base16-grayscale-light
+"colorscheme solarized
+"colorscheme solarized8_high
+"colorscheme mayanfog
+"colorscheme vanilla-cake
+"set background=light
+"colorscheme pencil
+"colorscheme snow
+"colorscheme snowy
+"colorscheme inkstained
+
+""" DARK THEMES:
+"colorscheme base16-material-palenight
+"let g:monotone_color = [8, 3, 82] 
+"let g:monotone_secondary_hue_offset = 200 " Offset secondary colors by 200 degrees
+"let g:monotone_emphasize_comments = 1 " Emphasize comments
+"let g:monotone_contrast_factor = 1 " Recommended values are between 0.9 and 1.1
+"colorscheme monotone
+"colorscheme nord
+"set background=dark
+"let g:palenight_terminal_italics=1
+"colorscheme palenight
+"let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
+"colorscheme hybrid
+"let ayucolor="dark"   " for dark version of theme
+"let ayucolor="light"  " for light version of theme
+"let ayucolor="mirage" " for mirage version of theme
+"colorscheme ayu
+"colorscheme OceanicNext
+"colorscheme minimal
+"colorscheme spacegray
+"let g:spacegray_underline_search = 1
+"let g:spacegray_low_contrast = 0
+"colorscheme base16-atelier-savanna
+"colorscheme base16-ocean
+"colorscheme base16-black-metal-marduk
+"colorscheme base16-grayscale-dark
+"colorscheme onedark
+"colorscheme hilal
+"colorscheme base16-tomorrow-night-eighties
+"colorscheme forest-night
+"colorscheme hybrid_reverse
+"colorscheme quantum
+"colorscheme desert-night
+"colorscheme allomancer
+"colorscheme hydrangea
+"colorscheme meh
+"colorscheme archery
+"colorscheme darcula
+
+" Base2Tone Dark
+"set background=dark
+"colorscheme Base2Tone_EveningDark
+" or any of the other schemes:
+" colorscheme Base2Tone_MorningDark
+" colorscheme Base2Tone_SeaDark
+" colorscheme Base2Tone_SpaceDark
+" colorscheme Base2Tone_EarthDark
+" colorscheme Base2Tone_ForestDark
+" colorscheme Base2Tone_DesertDark
+" colorscheme Base2Tone_LakeDark
+" colorscheme Base2Tone_MeadowDark
+" colorscheme Base2Tone_DrawbridgeDark
+" colorscheme Base2Tone_PoolDark
+" colorscheme Base2Tone_HeathDark
+" colorscheme Base2Tone_CaveDark
+
+" Base2Tone Light
+" set background=light
+" colorscheme Base2Tone_EveningLight
+" colorscheme Base2Tone_MorningLight
+" colorscheme Base2Tone_SeaLight
+" colorscheme Base2Tone_SpaceLight
+" colorscheme Base2Tone_EarthLight
+" colorscheme Base2Tone_ForestLight
+" colorscheme Base2Tone_DesertLight
+" colorscheme Base2Tone_LakeLight
+" colorscheme Base2Tone_MeadowLight
+" colorscheme Base2Tone_DrawbridgeLight
+" colorscheme Base2Tone_PoolLight
+" colorscheme Base2Tone_HeathLight
+" colorscheme Base2Tone_CaveLight
+
+
+""""""""""""""
+"  MAPPINGS  "
+""""""""""""""
+"" General
+
+" set leader key
+map <Space> <Leader>
+map <Space><Space> <Leader><Leader>
+
+" press backspace to switch to previous buffer
+nnoremap <BS> <C-^>
+
+" yank or paste from system clipboard
+noremap <Leader>Y "*y
+noremap <Leader>P "*p
+noremap <Leader>y "+y
+noremap <Leader>p "+p
+
+" yank entire buffer to system clipboard
+nnoremap <Leader><Leader>y :%y+<CR>
+
+" cycle through open buffers
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-P> :bprev<CR>
+
+" save current buffer
+nnoremap <silent> <leader>w :w<CR>
+
+" close buffer
+nnoremap <silent> <leader>n :bd<CR>
+
+" close buffer without losing the split window
+nnoremap <silent> <C-c> :bp\|bd #<CR>
+
+" copy text to the end-of-line
+nnoremap Y y$
+
+" preserve column position when jumping to mark
+nnoremap ' `
+
+" clear the search highlights
+nmap <Esc><Esc> <Esc>:nohlsearch<CR>
+
+" open url under cursor
+nnoremap <silent> gx :<C-u>call pandoc#hypertext#OpenSystem()<cr>
+
+" execute dot command on each line of visual selection
+vnoremap . :norm.<CR>
+" Disable entering EX mode
+nnoremap Q <Nop>
+
+" Use g[jk] for vertical movement in wrapped lines when no count is specified
+nnoremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+nnoremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+
+" Move cursor to top/bottom line before scrolling the page
+nnoremap <expr> H line(".") - &scrolloff == line("w0") ? "\<C-B>H" : "H"
+nnoremap <expr> L line(".") + &scrolloff == line("w$") ? "\<C-F>L" : "L"
+
+"" Stay in visual mode when indenting
+
+"vnoremap < <gv
+"vnoremap > >gv
+
+
+" Center cursor after half-screen scroll
+" nnoremap <C-U> 11kzz
+" nnoremap <C-D> 11jzz
+
+" replace the word under cursor
+" nnoremap <leader>* :%s/\<<c-r><c-w>\>//g<left><left>
+
+"" Current line text object
+
+" exclude linebreak and starts from first non-blank character
+xnoremap il g_o^
+onoremap il :normal vil<CR>
+
+" includes linebreak 
+xnoremap al $o0
+onoremap al :normal val<CR>
+
+"" Windows and splits
+
+"move window to thin vertical column on left 
+nnoremap <C-w>a :wincmd H\|30wincmd <bar><CR>
+"move window to 4/5 bottom
+nnoremap <C-w>b :wincmd J\|30wincmd _<CR>
+"move window to 4/5 right
+nnoremap <C-w>d :wincmd L\|99wincmd <bar><CR>
+"close quicklist and preview windows 
+nnoremap <S-Esc> :pc\|ccl<CR> 
+
+"" Show highlight group under cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+"" Python
+augroup python_run_mappings
+    autocmd!
+    "autocmd FileType python nnoremap <Leader>r :w\|!python3 %<CR>
+    autocmd FileType python nnoremap <silent> <Leader>d :AsyncRun -mode=terminal python3 %<CR>
+    autocmd FileType python nnoremap <silent> <Leader>R :AsyncRun -mode=terminal python3<CR>
+    autocmd FileType python nnoremap <silent> <Leader>r :w\|Goyo!\|Bexec()<CR>
+    autocmd FileType python vnoremap <silent> <Leader>d :w\|BexecVisual()<CR>
+    autocmd FileType python nnoremap <silent> <leader>D :AsyncRun -mode=terminal python3 -m pudb %:p<CR>
+augroup END
+
+"" Java
+function! CompileRunGcc()
+  exec "w"
+  if &filetype ==# 'java'
+    exec "!javac %"
+    if !v:shell_error
+      exec "!time java -cp %:p:h %:t:r"
+    endif
+  endif
+endfunction
+
+augroup java_run_mappings
+    autocmd!
+    autocmd FileType java nnoremap <Leader>d :call CompileRunGcc()<CR>
+augroup END
+
+" Macros
+let @p="A\<cr>import pdb; pdb.set_trace()\<esc>"
+let @m="A\<cr>if __name__ == '__main__':\<esc>\<cr>\<tab>"
+let @n="A\import numpy as np\<cr>\import matplotlib.pyplot as plt\<cr>\import pandas as pd\<cr>\<esc>\<cr>\<tab>"
+
+"" Neovim terminal
+
+if has('nvim')
+    " Mapping to enter normal mode
+    tnoremap <C-\><C-\> <C-\><C-n>
+    tnoremap <C-]><C-]> <C-\><C-n>:bd!<CR>
+endif
+
+" Open terminal in horizontal split
+nnoremap <Leader>[ :sp\|term<CR>
+
+"" Open vifm in builtin terminal
+nnoremap <Leader>v :AsyncRun -mode=terminal vifm .<CR><C-\><C-n><C-w>Ki
+
+""""""""""""""""""""""""""""""""
+"  AUTOCOMMANDS AND FUNCTIONS  "
+""""""""""""""""""""""""""""""""
+"" Autofolding .vimrc
+" see http://vimcasts.org/episodes/writing-a-custom-fold-expression/
+""" defines a foldlevel for each line of code
+function! VimFolds(lnum)
+  let s:thisline = getline(a:lnum)
+  if match(s:thisline, '^"" ') >= 0
+    return '>2'
+  endif
+  if match(s:thisline, '^""" ') >= 0
+    return '>3'
+  endif
+  let s:two_following_lines = 0
+  if line(a:lnum) + 2 <= line('$')
+    let s:line_1_after = getline(a:lnum+1)
+    let s:line_2_after = getline(a:lnum+2)
+    let s:two_following_lines = 1
+  endif
+  if !s:two_following_lines
+      return '='
+    endif
+  else
+    if (match(s:thisline, '^"""""') >= 0) &&
+       \ (match(s:line_1_after, '^"  ') >= 0) &&
+       \ (match(s:line_2_after, '^""""') >= 0)
+      return '>1'
+    else
+      return '='
+    endif
+  endif
+endfunction
+
+""" defines a foldtext
+function! VimFoldText()
+  " handle special case of normal comment first
+  let s:info = '('.string(v:foldend-v:foldstart).' l)'
+  if v:foldlevel == 1
+    let s:line = ' ◇ '.getline(v:foldstart+1)[3:-2]
+  elseif v:foldlevel == 2
+    let s:line = '   ●  '.getline(v:foldstart)[3:]
+  elseif v:foldlevel == 3
+    let s:line = '     ▪ '.getline(v:foldstart)[4:]
+  endif
+  if strwidth(s:line) > 80 - len(s:info) - 3
+    return s:line[:79-len(s:info)-3+len(s:line)-strwidth(s:line)].'...'.s:info
+  else
+    return s:line.repeat(' ', 80 - strwidth(s:line) - len(s:info)).s:info
+  endif
+endfunction
+
+""" set foldsettings automatically for vim files
+augroup fold_vimrc
+  autocmd!
+  autocmd FileType vim 
+                   \ setlocal foldmethod=expr |
+                   \ setlocal foldexpr=VimFolds(v:lnum) |
+                   \ setlocal foldtext=VimFoldText() |
+     "              \ set foldcolumn=2 foldminlines=2
+augroup END
+
+
+"" Custom splits
+
+function! ClearPymodeCustomSplit()
+    if exists('#PymodeSplitLeft#BufEnter')
+      augroup PymodeSplitLeft
+        autocmd!
+      augroup END
+    endif
+    if exists('#PymodeSplitBottom#BufEnter')
+      augroup PymodeSplitBottom
+        autocmd!
+      augroup END
+    endif
+endfunction
+
+" optional argument to set split width 
+function! TogglePymodeSplitLeft(...)
+    let default_width = 30
+    let s:widthnr = get(a:, 1, default_width)
+    augroup PymodeSplitLeft
+        autocmd!
+        autocmd BufEnter __run__,__doc__ :wincmd H
+        execute 'autocmd BufEnter __run__ :' . s:widthnr . 'wincmd |'
+        autocmd BufEnter __run__,__doc__ :setlocal nobuflisted
+        "autocmd BufEnter __run__,__doc__ :30wincmd |
+        "autocmd BufEnter __run__,__doc__ setlocal wrap
+    augroup END
+    augroup PymodeSplitBottom
+        autocmd!
+    augroup END
+endfunction
+
+" optional argument to set split height
+function! TogglePymodeSplitBottom(...)
+    let default_height = 15
+    let heightnr = get(a:, 1, default_height)
+    augroup PymodeSplitBottom
+        autocmd!
+        execute 'autocmd BufEnter __run__ :' . heightnr . 'wincmd _'
+    augroup END
+    augroup PymodeSplitLeft
+        autocmd!
+    augroup END
+endfunction
+
+
+
+"" Kitty terminal colors
+
+" These functions use Kitty terminal's remote to modify 
+" terminal colors according to the current colorscheme in Vim.
+
+" Change foreground and background to match current colorscheme
+function! KittyUpdateTerminalColorscheme()
+    " Update kitty terminal colors to match the current vim colorscheme (only
+    " fg and bg)
+    let l:normal_fg = synIDattr(hlID('Normal'), 'fg')
+    let l:normal_bg = synIDattr(hlID('Normal'), 'bg')
+    silent call system('kitty @ --to ' .  shellescape('unix:/tmp/mykitty') . ' set-colors -c background=' . l:normal_bg . ' foreground=' . l:normal_fg)
+endfunction
+
+" Change cursor color to match current colorscheme
+function! KittyCursorColorschemeColor()
+    let l:cursor_fg = synIDattr(hlID('Cursor'), 'fg')
+    let l:cursor_bg = synIDattr(hlID('Cursor'), 'bg')
+    silent call system('kitty @ set-colors -c cursor=' . l:cursor_bg . ' cursor_text_color=' . l:cursor_fg)
+endfunction
+
+" Reset terminal colors to defaults found in kitty.conf
+function! KittyResetColors()
+    silent call system('kitty @ set-colors --reset')
+endfunction
+
+"" Functions called on changing colorscheme/filetype
+
+" Run when colorscheme changes and modify according to 
+" the name of the new colorscheme
+function! s:colorscheme_customize() abort
+    "call KittyResetColors()
+
+    " Hide tildes in LineNr column
+    highlight EndOfBuffer guifg=bg
+    highlight LineNr guibg=bg
+    highlight CursorLineNr guibg=bg
+
+    if g:colors_name =~# 'amber' 
+        "call KittyResetColors()
+        highlight VertSplit guifg=bg
+        highlight VertSplit guibg=fg
+        "call KittyCursorColorschemeColor()
+        "set background=light
+        "call KittyUpdateTerminalColorscheme()
+    endif
+
+    if g:colors_name =~# 'nord' 
+        " Remove underline for highlighted yank
+        "highlight HighlightedyankRegion cterm=underline ctermfg=15 ctermbg=12 gui=underline guifg=#ECEFF4 guibg=#5E81AC
+        highlight HighlightedyankRegion ctermfg=15 ctermbg=12 guifg=#ECEFF4 guibg=#5E81AC
+    endif
+
+    " check if filename contains 'base16'
+    if g:colors_name =~# 'base16' 
+        " Transparent background for line number column
+        call Base16hi("LineNr", "", g:base16_gui00, "", "") 
+        call Base16hi("CursorLineNr", "", g:base16_gui00, "", "") 
+        call Base16hi("VertSplit", "", g:base16_gui00, "", "") 
+        " Status line for focused window
+        "call Base16hi("StatusLine", "", g:base16_gui00, "", "", "underline") 
+        " Status line for unfocused windows
+        call Base16hi("StatusLineNC", "", g:base16_gui00, "", "") 
+        " Transparent background for -- INSERT -- msg
+        highlight clear ModeMsg
+    endif
+
+    if g:colors_name =~# 'darcula'
+        "highlight Cursor guibg=fg guifg=bg
+        hi! link pythonEqual Normal
+    endif
+
+    if g:colors_name =~# 'mayanfog'
+        highlight LineNr guibg=bg
+        highlight CursorLineNr guibg=bg
+        "highlight VertSplit guibg=#e9e9de guifg=#e9e9de
+    endif
+
+    if g:colors_name =~# 'snowy'
+        highlight Cursor guifg=bg
+        highlight LineNr guibg=bg
+        highlight CursorLineNr guibg=bg
+    endif
+
+    if g:colors_name =~# 'inkstained'
+        highlight Cursor guifg=bg
+        highlight LineNr guibg=bg
+        highlight CursorLineNr guibg=bg
+    endif
+
+    if g:colors_name =~# 'pencil'
+        highlight CursorLineNr guibg=bg
+        "highlight VertSplit guibg=bg
+        "highlight StatusLine guibg=bg gui=underline
+        "highlight StatusLineNC guibg=bg gui=underline
+    endif
+
+    if g:colors_name =~# 'solarized'
+        highlight LineNr guibg=bg
+        highlight VertSplit guibg=bg
+    endif
+
+    if g:colors_name =~# 'base16-atelier-lakeside' 
+        " Status line for focused window
+        call Base16hi("StatusLine", "", g:base16_gui00, "", "", "underline") 
+    endif
+
+    if g:colors_name =~# 'plain'
+        " Transparent background for -- INSERT -- msg
+        highlight ModeMsg guibg=NONE
+    endif
+
+    if g:colors_name =~# 'vanilla-cake'
+        highlight LineNr guibg=bg
+        highlight CursorLineNr guibg=bg
+    endif
+
+    "highlight LineNr guibg=NONE
+    "highlight CursorLineNr guibg=NONE
+endfunction
+
+augroup nord-theme-overrides
+    autocmd!
+    " Use nord3_gui_bright for fold fg
+    autocmd ColorScheme nord highlight Folded guifg=#7b88a1
+augroup END
+
+
+" Link python syntax groups to default highlight groups
+function MyCustomHighlights()
+    hi! link pythonClass       Function
+    hi! link pythonFunction    Function
+    hi! link pythonBuiltinFunc Type
+    hi! link pythonBytesEscape SpecialChar
+    hi! link pythonStrFormat   Statement
+    "hi! link pythonDefine      Define
+    hi! link pythonDefine      Statement
+    hi! link pythonOperator    Operator
+    hi! link pythonEqual       Operator
+endfunction
+
+" All color & highlight autocmds
+augroup on_change_colorschema
+    autocmd!
+    autocmd FileType python call MyCustomHighlights()
+    autocmd ColorScheme * call MyCustomHighlights()
+    " colorscheme_customize() called after MyCustomHighlights() to enforce 
+    " scheme specific modifications
+    autocmd ColorScheme * call s:colorscheme_customize()
+augroup END
+
+"" Fast escape
+
+" lower timeout duration to eliminate delay when exiting insert mode
+"set timeoutlen=1000 " set mapping delays
+"set ttimeoutlen=0 " set key code delays
+augroup FastEscape
+    autocmd!
+    au InsertEnter * set timeoutlen=0
+    au InsertLeave * set timeoutlen=1000
+augroup END
+
+"" Output result of an EX command into split buffer
+function! Output(cmd)
+  redir => message
+  silent execute a:cmd
+  redir END
+  if empty(message)
+    echoerr "no output"
+  else
+    " use "new" instead of "tabnew" below for split windows instead of tabs
+    new
+    setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted nomodified
+    silent put=message
+  endif
+endfunction
+command! -nargs=+ -complete=command Output call Output(<q-args>)
+
+"" Toggle zoom on window 
+" Zoom / Restore window. (make it the only window)
+function! s:ZoomToggle() abort
+    if exists('t:zoomed') && t:zoomed
+        execute t:zoom_winrestcmd
+        let t:zoomed = 0
+    else
+        let t:zoom_winrestcmd = winrestcmd()
+        resize
+        vertical resize
+        let t:zoomed = 1
+    endif
+endfunction
+command! ZoomToggle call s:ZoomToggle()
+nnoremap <silent> <C-W>m :ZoomToggle<CR>
+
+"" Change window settings for BExec
+function! SetBexecSplitSize(...) " optional argument to set split width 
+    let s:widthnr = get(a:, 1, g:bexec_splitsize)
+    augroup bexec_window
+        autocmd!
+        autocmd BufEnter -BExec_output- :setlocal nowrap
+        execute 'autocmd BufEnter -BExec_output- :' . s:widthnr . 'wincmd |'
+    augroup END
+endfunction
+call SetBexecSplitSize(g:bexec_splitsize)
+
+"" Check python file using checkio_client
+function! s:CheckioCheckCurrentFile(...) abort
+    let s:name = substitute(expand('%:r'), '_', '-', 'g') " e.g. the_warriors.py -> the-warriors
+    execute ':!pipenv run checkio check ' . s:name
+endfunction
+command! CheckioCheckCurrentFile call s:CheckioCheckCurrentFile()
+"nnoremap <silent> <leader>D :Output CheckioCheckCurrentFile<CR>
+
+"" Return to last edit position when opening files
+augroup return_to_last_edit_position
+  autocmd!
+  autocmd BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal! g`\"" |
+        \ endif
+augroup END
+
+"" Avoid scrolling when switching buffers
+" https://vim.fandom.com/wiki/Avoid_scrolling_when_switch_buffers
+
+" Save current view settings on a per-window, per-buffer basis.
+function! AutoSaveWinView()
+    if !exists("w:SavedBufView")
+        let w:SavedBufView = {}
+    endif
+    let w:SavedBufView[bufnr("%")] = winsaveview()
+endfunction
+
+" Restore current view settings.
+function! AutoRestoreWinView()
+    let buf = bufnr("%")
+    if exists("w:SavedBufView") && has_key(w:SavedBufView, buf)
+        let v = winsaveview()
+        let atStartOfFile = v.lnum == 1 && v.col == 0
+        if atStartOfFile && !&diff
+            call winrestview(w:SavedBufView[buf])
+        endif
+        unlet w:SavedBufView[buf]
+    endif
+endfunction
+
+" When switching buffers, preserve window view.
+if v:version >= 700
+    autocmd BufLeave * call AutoSaveWinView()
+    autocmd BufEnter * call AutoRestoreWinView()
+endif
+
+"" Spell checking for markdown
+augroup markdown_spellcheck
+  autocmd!
+  autocmd FileType markdown setlocal spell
+  autocmd FileType markdown inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+augroup END
+
+"" Autocompile on save for latex
+augroup compile_on_save_latex
+    autocmd!
+    autocmd FileType tex nnoremap <buffer> <Leader>w :w\|AsyncRun xelatex %<CR>
+augroup END
