@@ -17,7 +17,8 @@ hide_edge_borders none
 # change borders
 bindsym $mod+u border none
 bindsym $mod+y border pixel 3
-bindsym $mod+n border normal
+bindsym $mod+Shift+n border normal
+bindsym $mod+n exec kitty --single-instance --listen-on unix:/tmp/mykitty nvim
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -27,7 +28,7 @@ font xft:URWGothic-Book 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty --listen-on unix:/tmp/mykitty
+bindsym $mod+Return exec kitty --single-instance --listen-on unix:/tmp/mykitty
 
 # kill focused window
 bindsym $mod+Shift+q kill

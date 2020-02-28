@@ -1053,7 +1053,8 @@ function! KittyUpdateTerminalColorscheme()
     " fg and bg)
     let l:normal_fg = synIDattr(hlID('Normal'), 'fg')
     let l:normal_bg = synIDattr(hlID('Normal'), 'bg')
-    silent call system('kitty @ --to ' .  shellescape('unix:/tmp/mykitty') . ' set-colors -c background=' . l:normal_bg . ' foreground=' . l:normal_fg)
+    "silent call system('kitty @ --to ' .  shellescape('unix:/tmp/mykitty') . ' set-colors -c background=' . l:normal_bg . ' foreground=' . l:normal_fg)
+    silent call system('kitty @ set-colors -c background=' . l:normal_bg . ' foreground=' . l:normal_fg)
 endfunction
 
 " Change cursor color to match current colorscheme

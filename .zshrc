@@ -127,3 +127,6 @@ kitty + complete setup zsh | source /dev/stdin
 
 # Track dotfiles: https://www.atlassian.com/git/tutorials/dotfiles
 alias config='/usr/bin/git --git-dir=/home/enovid/.cfg/ --work-tree=/home/enovid'
+
+# Allow RubyGems to be executed
+export PATH=$PATH:$(ruby -e 'puts Gem.user_dir')/bin
