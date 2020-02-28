@@ -191,6 +191,9 @@ bindsym --release $mod+c exec --no-startup-id xdotool key --clearmodifiers ctrl+
 bindsym $mod+Ctrl+f fullscreen disable
 bindsym --release $mod+Shift+f exec --no-startup-id xdotool search --onlyvisible --class google-chrome key --clearmodifiers F11 super+ctrl+f
 
+# Send PageDown and PageUp
+bindsym --release $mod+bracketleft exec --no-startup-id xdotool key --clearmodifiers Page_Up
+bindsym --release $mod+bracketright exec --no-startup-id xdotool key --clearmodifiers Page_Down
 
 # Open applications on specific workspaces
 # assign [class="Thunderbird"] $ws1
