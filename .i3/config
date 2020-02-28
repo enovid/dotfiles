@@ -195,6 +195,12 @@ bindsym --release $mod+Shift+f exec --no-startup-id xdotool search --onlyvisible
 bindsym --release $mod+bracketleft exec --no-startup-id xdotool key --clearmodifiers Page_Up
 bindsym --release $mod+bracketright exec --no-startup-id xdotool key --clearmodifiers Page_Down
 
+# Send arrow keys
+bindsym --release Mod1+h exec --no-startup-id xdotool key --clearmodifiers Left
+bindsym --release Mod1+j exec --no-startup-id xdotool key --clearmodifiers Down
+bindsym --release Mod1+k exec --no-startup-id xdotool key --clearmodifiers Up
+bindsym --release Mod1+l exec --no-startup-id xdotool key --clearmodifiers Right
+
 # Open applications on specific workspaces
 # assign [class="Thunderbird"] $ws1
 # assign [class="Pale moon"] $ws2
