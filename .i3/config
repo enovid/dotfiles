@@ -189,7 +189,7 @@ bindsym --release $mod+c exec --no-startup-id xdotool key --clearmodifiers ctrl+
 
 # Toggle toolbar visibility in Chrome
 bindsym $mod+Ctrl+f fullscreen disable
-bindsym --release $mod+Shift+f exec --no-startup-id xdotool search --onlyvisible --class google-chrome key --clearmodifiers F11 super+ctrl+f
+bindsym --release $mod+Shift+f exec --no-startup-id "xdotool search --onlyvisible --class google-chrome key --clearmodifiers F11 && i3-msg fullscreen disable"
 
 # Send PageDown and PageUp
 bindsym --release $mod+bracketleft exec --no-startup-id xdotool key --clearmodifiers Page_Up
