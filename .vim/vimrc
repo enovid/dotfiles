@@ -1085,8 +1085,8 @@ function! s:colorscheme_customize() abort
 
     if g:colors_name =~# 'blaquemagick' 
         highlight EndOfBuffer ctermfg=0
-        highlight LineNr ctermbg=0
-        highlight CursorLineNr ctermfg=249 ctermbg=0
+        highlight LineNr ctermbg=NONE
+        highlight CursorLineNr ctermfg=249 ctermbg=NONE
         highlight IncSearch ctermfg=16 ctermbg=66
         highlight Search ctermfg=16 ctermbg=66
     endif
