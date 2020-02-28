@@ -1089,6 +1089,10 @@ function! s:colorscheme_customize() abort
         highlight CursorLineNr ctermfg=249 ctermbg=NONE
         highlight IncSearch ctermfg=16 ctermbg=66
         highlight Search ctermfg=16 ctermbg=66
+        highlight MatchParen ctermfg=255 ctermbg=242
+        highlight StatusLine ctermbg=234 ctermfg=242
+        highlight StatusLineNC ctermbg=234 ctermfg=237
+        highlight VertSplit ctermfg=234 ctermbg=234
     endif
 
     if g:colors_name =~# 'amber' 
