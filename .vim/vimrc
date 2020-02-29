@@ -706,6 +706,7 @@ endif
 "" Colorscheme
 set notermguicolors
 colorscheme blaquemagick
+"colorscheme plain
 
 "let g:monotone_color = [8, 3, 82] 
 "let g:monotone_secondary_hue_offset = 200 " Offset secondary colors by 200 degrees
