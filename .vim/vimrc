@@ -4,97 +4,102 @@
 "" vim-plug plugin manager
 call plug#begin('~/.vim/plugged')
 
+
 "" Experimental
+Plug 'vifm/vifm.vim'
 Plug 'vimwiki/vimwiki', {'branch': 'dev'}
 let g:vimwiki_ext2syntax = {}
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'LukeSmithxyz/vimling' 
-"Plug 'szymonmaszke/vimpyter'
-"Plug 'wellle/context.vim'
-"let g:context_enabled = 0
-"Plug 'camspiers/animate.vim'
-"Plug 'camspiers/lens.vim'
-"let g:lens#animate = 0
 Plug 'lambdalisue/suda.vim'
 let g:suda_smart_edit = 1
-Plug 'vifm/vifm.vim'
+
 
 "" Completion
-""" nvim-lsp
-"Plug 'neovim/nvim-lsp'
 """ ultisnips
-"Plug 'SirVer/ultisnips', has('nvim') ? { 'on': [] } : {}
 Plug 'SirVer/ultisnips'
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsExpandTrigger = '<c-;>'
 let g:UltiSnipsJumpForwardTrigger = '<c-]>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-[>'
+
 """ coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_filetype_map = {
         \ 'ipynb': 'python'
         \ }
+
 """ auto pair brackets
 Plug 'tmsvg/pear-tree'
 let g:pear_tree_smart_openers = 1
 let g:pear_tree_smart_closers = 1
 let g:pear_tree_smart_backspace = 1
+
+
 "" Extend Basic Vim Functionality
 """ Cheatsheet for mappings
 Plug 'lifepillar/vim-cheat40'
+
 """ Search
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'nelstrom/vim-visual-star-search'
+
 """ AutoSave 
 " disabled by default, run :AutoSaveToggle to enable/disable it.
 Plug 'vim-scripts/vim-auto-save'
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+
 """ Auto surround
 Plug 'machakann/vim-sandwich'
+
 """ Auto comment
 Plug 'scrooloose/nerdcommenter'
 let g:NERDCustomDelimiters = {
     \ 'markdown': { 'left': '#' },
     \ 'pandoc': { 'left': '#' }
 \ }
+
 """ Align multiple lines
 Plug 'junegunn/vim-easy-align'
-""" Copy and paste
-"Plug 'idanarye/vim-yankitute'
-"Plug 'inkarkat/vim-UnconditionalPaste'
-""" Movement inside buffer
+
+""" Movement within buffer
 Plug 'easymotion/vim-easymotion'
+
 """ More textobjects
 Plug 'wellle/targets.vim'
 let g:targets_nl = ['n', 'N']
 Plug 'michaeljsmith/vim-indent-object'
+
 """ Repeatability
 Plug 'tpope/vim-repeat'
 Plug 'vim-scripts/visualrepeat'
+
 """ Move lines
 Plug 'matze/vim-move'
 let g:move_key_modifier = 'C'
+
 """ Linewise diff
 Plug 'AndrewRadev/linediff.vim'
+
 """ Resize windows
 Plug 'simeji/winresizer'
 let g:winresizer_start_key = '<C-F>'
 let g:winresizer_vert_resize = 10
 
+""" Run asynchronous shell commands
+Plug 'skywind3000/asyncrun.vim'
+
+
 "" Filetype Specific
-""" Markdown and Latex
-" vim-pandoc-markdown-preview executes pandoc after 
-" every bufferwrite `:w` :StartMdPreview (asyncrun is dependency)
-Plug 'enovid/vim-pandoc-markdown-preview' | Plug 'skywind3000/asyncrun.vim'
-let g:md_pdf_viewer="open -a Preview"
-let g:md_pdf_engine="xelatex"
+""" Markdown
+Plug 'dkarter/bullets.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 let g:mkdp_auto_close = 0
 "let g:mkdp_markdown_css = '/Users/enovid/Documents/MarkdownCSS/nord.css'
-Plug 'dkarter/bullets.vim'
+
 """ Pandoc
 Plug 'vim-pandoc/vim-pandoc'
 let g:pandoc#keyboard#use_default_mappings = 0
@@ -106,70 +111,79 @@ let g:pandoc#hypertext#use_default_mappings = 0
 Plug 'vim-pandoc/vim-pandoc-syntax'
 let g:pandoc#syntax#codeblocks#embeds#langs = ["python"]
 let g:pandoc#syntax#conceal#use = 0
+
 """ Python syntax highlight
 Plug 'Guzzii/python-syntax'
 let g:python_highlight_indent_errors = 0
 let g:python_highlight_space_errors = 0
 let g:python_highlight_all = 1
+
+
 "" Fuzzy Finding
 """ fzf.vim
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 let g:fzf_command_prefix = 'Fzf'
+
 """ fzf-preview.vim
 Plug 'yuki-ycino/fzf-preview.vim'
 
 """ fuzzy notes
 Plug 'alok/notational-fzf-vim'
 let g:nv_search_paths = ['~/notes']
+
+
 "" Programming
-""" Execute output to buffer
-Plug 'fboender/bexec'
-let g:bexec_interpreter="/usr/local/bin/python3"
-let g:bexec_splitdir='hor'
-"let g:bexec_splitsize='40'
-let g:bexec_splitsize=''
-let g:bexec_outputscroll=1
-""" File structure outline
-Plug 'vim-voom/VOoM'
-""" REPL in buffer
-Plug 'metakirby5/codi.vim'
-""" Set working directory to the project root
+""" Set working directory to project root
 Plug 'airblade/vim-rooter'
 let g:rooter_silent_chdir = 1
 let g:rooter_change_directory_for_non_project_files = 'current'
-""" Print variables for debugging
+
+""" Toggle line-wrap for lists of arguments
+Plug 'FooSoft/vim-argwrap'
+
+""" REPL in buffer
+Plug 'metakirby5/codi.vim'
+
+""" Show stdout in buffer
+Plug 'fboender/bexec'
+let g:bexec_interpreter="/usr/local/bin/python3"
+let g:bexec_splitdir='hor'
+let g:bexec_splitsize=''
+let g:bexec_outputscroll=1
+
+""" Outline file structure
+Plug 'vim-voom/VOoM'
+
+""" Insert print statements for debugging
 Plug 'meain/vim-printer'
 let g:vim_printer_print_below_keybinding = '<leader>i'
 let g:vim_printer_print_above_keybinding = '<leader>I'
-
 let g:vim_printer_items = {
       \ 'python': "print(f'{$}: \{{$}\}')",
       \ }
 
-"let g:vim_printer_items = {
-      "\ 'python': 'ic({$})',
-      "\ }
-""" Wrap and unwrap arguments
-Plug 'FooSoft/vim-argwrap'
+
 "" Look and Feel
 """ smooth scroll
 Plug 'psliwka/vim-smoothie'
+
 """ no-distract mode
 Plug 'junegunn/goyo.vim'
 let g:goyo_linenr = 1
-"let g:goyo_width = 80+5
 let g:goyo_width = 120
 let g:goyo_height = '100%'
 Plug 'junegunn/limelight.vim'
 let g:limelight_paragraph_span = 1
-Plug 'amix/vim-zenroom2'
+
 """ highlight yank
 Plug 'machakann/vim-highlightedyank'
 let g:highlightedyank_highlight_duration = 500
-""" hilight color codes
+
+""" highlight color codes in text
 Plug 'ap/vim-css-color'
-""" colorscheme management
+
+""" manage colorschemes
 Plug 'lifepillar/vim-colortemplate'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-colorscheme-switcher'
@@ -177,33 +191,18 @@ let g:colorscheme_switcher_exclude_builtins = 1
 Plug 'Taverius/vim-colorscheme-manager'
 let g:colorscheme_manager_define_mappings = 0
 Plug 'kergoth/vim-hilinks'
+
 """ colorschemes
-Plug 'smallwat3r/efficient'
-Plug 'joshdick/onedark.vim'
-Plug 'kocakosm/hilal'
 Plug 'chriskempson/base16-vim'
-Plug 'sainnhe/vim-color-forest-night'
-Plug 'sainnhe/vim-color-desert-night'
-Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'tyrannicaltoucan/vim-quantum'
-"Plug 'andreypopp/vim-colors-plain'
 Plug 'reedes/vim-colors-pencil'
-Plug 'ajh17/Spacegray.vim'
 Plug 'wolverian/minimal'
-Plug 'mhartington/oceanic-next'
 Plug 'ayu-theme/ayu-vim'
 Plug 'w0ng/vim-hybrid'
-Plug 'drewtempelmeyer/palenight.vim'
 Plug 'arcticicestudio/nord-vim'
 let g:nord_uniform_diff_background = 1
 let g:nord_uniform_status_lines = 0
-Plug 'altercation/vim-colors-solarized'
 Plug 'junegunn/seoul256.vim'
-Plug 'vim-scripts/summerfruit256.vim'
-
-Plug 'nanotech/jellybeans.vim'
 Plug 'cideM/yui'
-Plug 'rj-white/vim-colors-paramountblue'
 Plug 'lifepillar/vim-solarized8'
 Plug 'arzg/vim-plan9'
 Plug 'arzg/vim-mayanfog'
@@ -212,58 +211,45 @@ Plug 'logico-software/typewriter'
 Plug 'enovid/inkstained-vim'
 Plug 'yuttie/snowy-vim'
 Plug 'kadekillary/subtle_solo'
-Plug 'sainnhe/vim-color-vanilla-cake'
-Plug 'sainnhe/vim-color-fairy-garden'
-Plug 'rakr/vim-two-firewatch'
 Plug 'vim-scripts/darktango.vim'
-
 Plug 'fxn/vim-monochrome'
-Plug 'Nequo/vim-allomancer'
 Plug 'nightsense/snow'
-
 Plug 'nightsense/seabird'
 Plug 'kristiandupont/shades-of-teal'
-Plug 'ajgrf/sprinkles'
-Plug 'zefei/cake16'
 Plug 'cormacrelf/vim-colors-github'
 let g:github_colors_soft = 0
 Plug 'vim-scripts/Cleanroom'
-Plug 'kadekillary/subtle_solo'
 Plug 'yuttie/hydrangea-vim'
-Plug 'jordwalke/flatlandia'
-
 Plug 'Badacadabra/vim-archery'
 Plug 'enovid/vim-colors-meh'
-
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'cocopon/iceberg.vim'
-Plug 'arzg/vim-corvine'
 Plug 'ajgrf/parchment'
 Plug 'doums/darcula'
 Plug 'arzg/vim-substrata'
 let g:substrata_italic_comments = 0
 let g:substrata_italic_functions = 0
 Plug 'whatyouhide/vim-gotham'
-Plug 'vim-scripts/peaksea'
-Plug 'jacoborus/tender.vim'
 Plug 'wolf-dog/nighted.vim'
-Plug 'eemed/noxtra'
 Plug 'AlessandroYorba/Breve'
 Plug 'arzg/vim-oldbook8'
 Plug 'tek256/simple-dark'
-
-Plug 'atelierbram/Base2Tone-vim'
 Plug 'jonathanfilip/vim-lucius'
 Plug 'camgunz/amber'
-
 Plug 'xero/blaquemagick.vim'
 Plug 'xero/sourcerer.vim'
 Plug 'NerdyPepper/vim-colors-plain', {'branch': 'duotone'}
 
+
 "" Unused
-"Plug 'alexherbo2/kakoune.vim'
-""" Variable naming with Codelf
-"Plug 'voldikss/vim-codelf'
+"Plug 'amix/vim-zenroom2'
+"Plug 'andreypopp/vim-colors-plain'
+"Plug 'wellle/context.vim'
+"let g:context_enabled = 0
+"Plug 'camspiers/animate.vim'
+"Plug 'camspiers/lens.vim'
+"let g:lens#animate = 0
+"Plug 'szymonmaszke/vimpyter'
 
 call plug#end()
 
@@ -272,7 +258,6 @@ call plug#end()
 "  PLUGIN SETTINGS   "
 """"""""""""""""""""""
 "" coc.nvim
-
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
 
@@ -318,12 +303,11 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
 
 
 "" BExec
-
 "close BExec_output window
 nnoremap <silent> <Leader>g :BexecCloseOut<CR>
 
-"" colorscheme manager
 
+"" colorscheme manager
 " Manage blacklist
 "inoremap <silent> <F12> <C-O>:BlacklistAddColorScheme<CR>
 "nnoremap <silent> <F12> :BlacklistAddColorScheme<CR>
@@ -339,16 +323,10 @@ nnoremap <silent> <S-Right> :NextColorScheme<CR>\|:colorscheme<CR>
 nnoremap <silent> <S-Left> :PrevColorScheme<CR>\|:colorscheme<CR>
 nnoremap <S-Up> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
-"" fzf-preview.vim
-"nnoremap <silent> <leader>h :FzfPreviewOldFiles<CR>
 
 "" fzf
-""" Mappings
-" Shortcut to search file contents with fzf and rg: nnoremap <C-J> :Rg<CR>
-"nnoremap <silent> <leader>i :call fzf#vim#files('.', {'options': '--prompt ""'})<CR>
-"nnoremap <silent> <leader>I :call fzf#vim#files('~', {'options': '--prompt ""'})<CR>
+""" mappings
 nnoremap <silent> <leader>/ :cd %:h\|FzfRg<CR>
-"nnoremap <silent> <leader>o :FzfFiles <C-r>=expand("%:h")<CR>/<CR>
 nnoremap <silent> <leader>o :FzfFiles<CR>
 nnoremap <silent> <leader>O :FzfFiles ~<CR>
 nnoremap <silent> <leader>h :FzfHistory<CR>
@@ -372,9 +350,7 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
-""" Colors
-
-" Customize fzf colors to match your color scheme
+""" fzf colors
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
@@ -390,15 +366,17 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
+""" fzf-preview.vim
+"nnoremap <silent> <leader>h :FzfPreviewOldFiles<CR>
+
 
 "" ultiSnips
-
-"   Allow :Snippets command to search snippet descriptions.
+" enable :Snippets command to search snippet descriptions
 command! -bar -bang Snippets call fzf#vim#snippets({'options': '-n ..'}, <bang>0)
 nnoremap <C-S> :Snippets<CR>
 
-"" easymotion
 
+"" easymotion
 " Use uppercase target labels and type as a lower case
 let g:EasyMotion_use_upper = 1
 let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
@@ -417,20 +395,8 @@ map  <Leader>E <Plug>(easymotion-bd-E)
 " Jump to any two characters on any window
 nmap <Leader>s <Plug>(easymotion-overwin-f2)
 
-""" Unused
-
-" Move to word
-"map  <Leader>W <Plug>(easymotion-bd-w)
-"nmap <Leader>W <Plug>(easymotion-overwin-w)
-" Bidirectional & within line 't' & 'f' motions
-"omap t <Plug>(easymotion-bd-tl)
-"omap f <Plug>(easymotion-bd-fl)
-"map  <Leader>f <Plug>(easymotion-bd-f)
-"nmap <Leader>f <Plug>(easymotion-overwin-f)
-"map  <Leader>t <Plug>(easymotion-bd-t)
 
 "" haya14busa incsearch
-
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
@@ -446,24 +412,20 @@ map g# <Plug>(incsearch-nohl-g#)
 map z/ <Plug>(incsearch-fuzzy-/)
 map z? <Plug>(incsearch-fuzzy-?)
 map zg/ <Plug>(incsearch-fuzzy-stay)
-"map z/ <Plug>(incsearch-easymotion-/)
-"map z? <Plug>(incsearch-easymotion-?)
-"map zg/ <Plug>(incsearch-easymotion-stay)
+
 
 "" easyalign
-
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
-
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-"" notational-fzf-vim
 
+"" notational-fzf-vim
 nnoremap <silent> <leader>a :NV<CR>
 
-"" goyo
 
+"" goyo
 nnoremap <silent> <leader>z :Goyo<CR>
 nnoremap <silent> <leader>Z :Goyo 60-5<CR>
 
@@ -479,39 +441,32 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
-"" kakoune
-
-"nmap <Leader><CR> <Plug>(Kakoune)
-"vmap <Leader><CR> <Plug>(Kakoune)
 
 "" voom
-
 nnoremap <leader>V :Goyo!\|Voom python<CR>
 
-"" pear-tree
 
+"" pear-tree
 imap <tab> <Plug>(PearTreeJump)
 imap <S-Enter> <Plug>(PearTreeExpand)
 
-"" limelight
 
+"" limelight
 nnoremap <leader>l :Limelight!!<CR>
 " Use visual selection
 xmap <Leader>l <Plug>(Limelight)
 
-"" vim-hilinks
 
+"" vim-hilinks
 map <Leader><Leader>H <Plug>HiLinkTrace
 map <Leader><Leader>h :HLT!<CR>
 
-"" vim-sandwich
 
+"" vim-sandwich
 "disable s as recommended by vim-sandwich manual
 nmap s <Nop>
 xmap s <Nop>
-
-" delete the function surrounding 'args'  
-" e.g. object.method(args)
+" delete the function surrounding 'args'  e.g. object.method(args)
 let g:sandwich#magicchar#f#patterns = [
 \   {
 \     'header' : '\<\%(\h\k*\.\)*\h\k*',
@@ -521,15 +476,15 @@ let g:sandwich#magicchar#f#patterns = [
 \   },
 \ ]
 
-"" python motions
 
-" Location: autoload/pymode/motion.vim
+"" python motions
 " Enable pymode motions e.g. aC iC aM iM
+" located in ~/.vim/autoload/pymode/motion.vim
 let g:pymode_motion = 1
 
-"" vimwiki
 
-" global
+"" vimwiki
+" global keybinds
 nmap <Leader><Leader>ww <Plug>VimwikiIndex
 nmap <Leader><Leader>wt <Plug>VimwikiTabIndex
 nmap <Leader><Leader>ws <Plug>VimwikiUISelect
@@ -539,7 +494,7 @@ nmap <Leader><Leader>w<Leader>t <Plug>VimwikiTabMakeDiaryNote
 nmap <Leader><Leader>w<Leader>y <Plug>VimwikiMakeYesterdayDiaryNote
 nmap <Leader><Leader>w<Leader>m <Plug>VimwikiMakeTomorrowDiaryNote
 
-" local
+" local keybinds
 nmap <Leader><Leader>w<Leader>i <Plug>VimwikiDiaryGenerateLinks
 nmap <Leader><Leader>wh <Plug>Vimwiki2HTML
 nmap <Leader><Leader>whh <Plug>Vimwiki2HTMLBrowse
@@ -573,20 +528,21 @@ function! VimwikiLinkHandler(link)
   endif
 endfunction
 
-"" codelf
-"nnoremap <silent> M :call codelf#start()<CR>
 
 "" argwrap
 nnoremap <silent> ,a :ArgWrap<CR>
+
 
 "" vimpyter
 autocmd Filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
 "autocmd Filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
 "autocmd Filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
 
+
 """"""""""""""""""""""
 "  GENERAL SETTINGS  "
 """"""""""""""""""""""
+"" Vim options
 set nocompatible              " be iMproved, required
 filetype plugin on
 
@@ -615,12 +571,12 @@ augroup END
 " searches down into subfolders
 set path+=**
 
-" Display all matching files when we tab complete
+" display all matching files when we tab complete
 " - Hit tab to :find by partial match
 " - Use * to make it fuzzy
 set wildmenu
 
-" Allow changing buffers without save
+" allow changing buffers without save
 set hidden 
 
 " show command as it's typed
@@ -641,7 +597,7 @@ set noruler
 " disable statusline except for splits
 set laststatus=2
 
-" Show line numbers
+" show line numbers
 set number
 
 " show linenumbers relative to currentline
@@ -669,6 +625,7 @@ set undodir=~/.vim/undodir
 " open vertical split to the right
 set splitright
 
+
 "" GUI, cursor, font
 if has("gui_running")
   let s:uname = system("uname")
@@ -680,14 +637,13 @@ if has("gui_running")
     set guifont=RobotoMono-Light:h15
   endif
 endif
-
 " Cursor width
 "let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
 "let &t_SR = "\<Esc>]50;CursorShape=2\x7" 
 "let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
 
-"" Color support
 
+"" Color support
 " Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 if (empty($TMUX))
   if (has("nvim"))
@@ -703,87 +659,18 @@ if (empty($TMUX))
 endif
 
 
-"" Colorscheme
-set notermguicolors
-colorscheme blaquemagick
-"colorscheme plain
-
-"let g:monotone_color = [8, 3, 82] 
-"let g:monotone_secondary_hue_offset = 200 " Offset secondary colors by 200 degrees
-"let g:monotone_emphasize_comments = 1 " Emphasize comments
-"let g:monotone_contrast_factor = 1 " Recommended values are between 0.9 and 1.1
-"colorscheme monotone
-"colorscheme nord
+"" Colorscheme (Active)
+"set notermguicolors
 "set background=dark
-"let g:palenight_terminal_italics=1
-"colorscheme palenight
-"let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
-"colorscheme hybrid
-"let ayucolor="dark"   " for dark version of theme
-"let ayucolor="light"  " for light version of theme
-"let ayucolor="mirage" " for mirage version of theme
-"colorscheme ayu
-"colorscheme OceanicNext
-"colorscheme minimal
-"colorscheme spacegray
-"let g:spacegray_underline_search = 1
-"let g:spacegray_low_contrast = 0
-"colorscheme base16-atelier-savanna
-"colorscheme base16-ocean
-"colorscheme base16-black-metal-marduk
-"colorscheme base16-grayscale-dark
-"colorscheme onedark
-"colorscheme hilal
-"colorscheme base16-tomorrow-night-eighties
-"colorscheme forest-night
-"colorscheme hybrid_reverse
-"colorscheme quantum
-"colorscheme desert-night
-"colorscheme allomancer
-"colorscheme hydrangea
-"colorscheme meh
-"colorscheme archery
-"colorscheme darcula
-
-" Base2Tone Dark
-"set background=dark
-"colorscheme Base2Tone_EveningDark
-" or any of the other schemes:
-" colorscheme Base2Tone_MorningDark
-" colorscheme Base2Tone_SeaDark
-" colorscheme Base2Tone_SpaceDark
-" colorscheme Base2Tone_EarthDark
-" colorscheme Base2Tone_ForestDark
-" colorscheme Base2Tone_DesertDark
-" colorscheme Base2Tone_LakeDark
-" colorscheme Base2Tone_MeadowDark
-" colorscheme Base2Tone_DrawbridgeDark
-" colorscheme Base2Tone_PoolDark
-" colorscheme Base2Tone_HeathDark
-" colorscheme Base2Tone_CaveDark
-
-" Base2Tone Light
-" set background=light
-" colorscheme Base2Tone_EveningLight
-" colorscheme Base2Tone_MorningLight
-" colorscheme Base2Tone_SeaLight
-" colorscheme Base2Tone_SpaceLight
-" colorscheme Base2Tone_EarthLight
-" colorscheme Base2Tone_ForestLight
-" colorscheme Base2Tone_DesertLight
-" colorscheme Base2Tone_LakeLight
-" colorscheme Base2Tone_MeadowLight
-" colorscheme Base2Tone_DrawbridgeLight
-" colorscheme Base2Tone_PoolLight
-" colorscheme Base2Tone_HeathLight
-" colorscheme Base2Tone_CaveLight
+"colorscheme blaquemagick
+set background=light
+colorscheme plain
 
 
 """"""""""""""
 "  MAPPINGS  "
 """"""""""""""
 "" General
-
 " set leader key
 map <Space> <Leader>
 map <Space><Space> <Leader><Leader>
@@ -827,7 +714,8 @@ nnoremap <silent> gx :<C-u>call pandoc#hypertext#OpenSystem()<cr>
 
 " execute dot command on each line of visual selection
 vnoremap . :norm.<CR>
-" Disable entering EX mode
+
+" disable entering EX mode
 nnoremap Q <Nop>
 
 " Use g[jk] for vertical movement in wrapped lines when no count is specified
@@ -838,31 +726,17 @@ nnoremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 nnoremap <expr> H line(".") - &scrolloff == line("w0") ? "\<C-B>H" : "H"
 nnoremap <expr> L line(".") + &scrolloff == line("w$") ? "\<C-F>L" : "L"
 
-"" Stay in visual mode when indenting
-
-"vnoremap < <gv
-"vnoremap > >gv
-
-
-" Center cursor after half-screen scroll
-" nnoremap <C-U> 11kzz
-" nnoremap <C-D> 11jzz
-
-" replace the word under cursor
-" nnoremap <leader>* :%s/\<<c-r><c-w>\>//g<left><left>
 
 "" Current line text object
-
 " exclude linebreak and starts from first non-blank character
 xnoremap il g_o^
 onoremap il :normal vil<CR>
-
 " includes linebreak 
 xnoremap al $o0
 onoremap al :normal val<CR>
 
-"" Windows and splits
 
+"" Windows and splits
 "move window to thin vertical column on left 
 nnoremap <C-w>a :wincmd H\|30wincmd <bar><CR>
 "move window to 4/5 bottom
@@ -872,10 +746,12 @@ nnoremap <C-w>d :wincmd L\|99wincmd <bar><CR>
 "close quicklist and preview windows 
 nnoremap <S-Esc> :pc\|ccl<CR> 
 
+
 "" Show highlight group under cursor
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 
 "" Python
 augroup python_run_mappings
@@ -887,6 +763,11 @@ augroup python_run_mappings
     autocmd FileType python vnoremap <silent> <Leader>d :w\|BexecVisual()<CR>
     autocmd FileType python nnoremap <silent> <leader>D :AsyncRun -mode=terminal python3 -m pudb %:p<CR>
 augroup END
+" Macros
+let @p="A\<cr>import pdb; pdb.set_trace()\<esc>"
+let @m="A\<cr>if __name__ == '__main__':\<esc>\<cr>\<tab>"
+let @n="A\import numpy as np\<cr>\import matplotlib.pyplot as plt\<cr>\import pandas as pd\<cr>\<esc>\<cr>\<tab>"
+
 
 "" Java
 function! CompileRunGcc()
@@ -904,13 +785,8 @@ augroup java_run_mappings
     autocmd FileType java nnoremap <Leader>d :call CompileRunGcc()<CR>
 augroup END
 
-" Macros
-let @p="A\<cr>import pdb; pdb.set_trace()\<esc>"
-let @m="A\<cr>if __name__ == '__main__':\<esc>\<cr>\<tab>"
-let @n="A\import numpy as np\<cr>\import matplotlib.pyplot as plt\<cr>\import pandas as pd\<cr>\<esc>\<cr>\<tab>"
 
 "" Neovim terminal
-
 if has('nvim')
     " Mapping to enter normal mode
     tnoremap <C-\><C-\> <C-\><C-n>
@@ -920,8 +796,10 @@ endif
 " Open terminal in horizontal split
 nnoremap <Leader>[ :sp\|term<CR>
 
+
 "" Open vifm in builtin terminal
 nnoremap <Leader>v :AsyncRun -mode=terminal vifm .<CR><C-\><C-n><C-w>Ki
+
 
 """"""""""""""""""""""""""""""""
 "  AUTOCOMMANDS AND FUNCTIONS  "
@@ -987,7 +865,6 @@ augroup END
 
 
 "" Custom splits
-
 function! ClearPymodeCustomSplit()
     if exists('#PymodeSplitLeft#BufEnter')
       augroup PymodeSplitLeft
@@ -1032,47 +909,41 @@ function! TogglePymodeSplitBottom(...)
 endfunction
 
 
+"" Set Kitty terminal colors
+" These functions use Kitty's remote to modify terminal colors according to
+" the current colorscheme in Vim.
 
-"" Kitty terminal colors
-
-" These functions use Kitty terminal's remote to modify 
-" terminal colors according to the current colorscheme in Vim.
-
-" Change foreground and background to match current colorscheme
+" Set Kitty's foreground and background colors to match current colorscheme
 function! KittyUpdateTerminalColorscheme()
-    " Update kitty terminal colors to match the current vim colorscheme (only
-    " fg and bg)
     let l:normal_fg = synIDattr(hlID('Normal'), 'fg')
     let l:normal_bg = synIDattr(hlID('Normal'), 'bg')
     "silent call system('kitty @ --to ' .  shellescape('unix:/tmp/mykitty') . ' set-colors -c background=' . l:normal_bg . ' foreground=' . l:normal_fg)
     silent call system('kitty @ set-colors -c background=' . l:normal_bg . ' foreground=' . l:normal_fg)
 endfunction
 
-" Change cursor color to match current colorscheme
+" Set Kitty's cursor color to match current colorscheme
 function! KittyCursorColorschemeColor()
     let l:cursor_fg = synIDattr(hlID('Cursor'), 'fg')
     let l:cursor_bg = synIDattr(hlID('Cursor'), 'bg')
     silent call system('kitty @ set-colors -c cursor=' . l:cursor_bg . ' cursor_text_color=' . l:cursor_fg)
 endfunction
 
-" Reset terminal colors to defaults found in kitty.conf
+" Reset terminal colors to the defaults in kitty.conf
 function! KittyResetColors()
     silent call system('kitty @ set-colors --reset')
 endfunction
 
+
 "" Functions called on changing colorscheme/filetype
-
-" Run when colorscheme changes and modify according to 
-" the name of the new colorscheme
+" Custom colorscheme modifications applied when colorscheme is changed
 function! s:colorscheme_customize() abort
-    "call KittyResetColors()
-
     " Hide tildes in LineNr column
     highlight EndOfBuffer guifg=bg
     highlight LineNr guibg=bg
     highlight CursorLineNr guibg=bg
 
     if g:colors_name =~# 'blaquemagick' 
+        set notermguicolors
         highlight EndOfBuffer ctermfg=0
         highlight LineNr ctermbg=NONE
         highlight CursorLineNr ctermfg=249 ctermbg=NONE
@@ -1085,31 +956,20 @@ function! s:colorscheme_customize() abort
     endif
 
     if g:colors_name =~# 'amber' 
-        "call KittyResetColors()
         highlight VertSplit guifg=bg
         highlight VertSplit guibg=fg
-        "call KittyCursorColorschemeColor()
-        "set background=light
-        "call KittyUpdateTerminalColorscheme()
     endif
 
     if g:colors_name =~# 'nord' 
         " Remove underline for highlighted yank
-        "highlight HighlightedyankRegion cterm=underline ctermfg=15 ctermbg=12 gui=underline guifg=#ECEFF4 guibg=#5E81AC
         highlight HighlightedyankRegion ctermfg=15 ctermbg=12 guifg=#ECEFF4 guibg=#5E81AC
     endif
 
-    " check if filename contains 'base16'
     if g:colors_name =~# 'base16' 
-        " Transparent background for line number column
         call Base16hi("LineNr", "", g:base16_gui00, "", "") 
         call Base16hi("CursorLineNr", "", g:base16_gui00, "", "") 
         call Base16hi("VertSplit", "", g:base16_gui00, "", "") 
-        " Status line for focused window
-        "call Base16hi("StatusLine", "", g:base16_gui00, "", "", "underline") 
-        " Status line for unfocused windows
         call Base16hi("StatusLineNC", "", g:base16_gui00, "", "") 
-        " Transparent background for -- INSERT -- msg
         highlight clear ModeMsg
     endif
 
@@ -1121,7 +981,6 @@ function! s:colorscheme_customize() abort
     if g:colors_name =~# 'mayanfog'
         highlight LineNr guibg=bg
         highlight CursorLineNr guibg=bg
-        "highlight VertSplit guibg=#e9e9de guifg=#e9e9de
     endif
 
     if g:colors_name =~# 'snowy'
@@ -1138,33 +997,11 @@ function! s:colorscheme_customize() abort
 
     if g:colors_name =~# 'pencil'
         highlight CursorLineNr guibg=bg
-        "highlight VertSplit guibg=bg
-        "highlight StatusLine guibg=bg gui=underline
-        "highlight StatusLineNC guibg=bg gui=underline
-    endif
-
-    if g:colors_name =~# 'solarized'
-        highlight LineNr guibg=bg
-        highlight VertSplit guibg=bg
-    endif
-
-    if g:colors_name =~# 'base16-atelier-lakeside' 
-        " Status line for focused window
-        call Base16hi("StatusLine", "", g:base16_gui00, "", "", "underline") 
     endif
 
     if g:colors_name =~# 'plain'
-        " Transparent background for -- INSERT -- msg
         highlight ModeMsg guibg=NONE
     endif
-
-    if g:colors_name =~# 'vanilla-cake'
-        highlight LineNr guibg=bg
-        highlight CursorLineNr guibg=bg
-    endif
-
-    "highlight LineNr guibg=NONE
-    "highlight CursorLineNr guibg=NONE
 endfunction
 
 augroup nord-theme-overrides
@@ -1172,7 +1009,6 @@ augroup nord-theme-overrides
     " Use nord3_gui_bright for fold fg
     autocmd ColorScheme nord highlight Folded guifg=#7b88a1
 augroup END
-
 
 " Link python syntax groups to default highlight groups
 function MyCustomHighlights()
@@ -1187,26 +1023,27 @@ function MyCustomHighlights()
     hi! link pythonEqual       Operator
 endfunction
 
-" All color & highlight autocmds
+" Autcmd responsible for all modifications to color & highlight 
 augroup on_change_colorschema
     autocmd!
     autocmd FileType python call MyCustomHighlights()
     autocmd ColorScheme * call MyCustomHighlights()
-    " colorscheme_customize() called after MyCustomHighlights() to enforce 
+    " colorscheme_customize() called after MyCustomHighlights() to enforce
     " scheme specific modifications
     autocmd ColorScheme * call s:colorscheme_customize()
 augroup END
 
-"" Fast escape
 
+"" Fast escape
 " lower timeout duration to eliminate delay when exiting insert mode
-"set timeoutlen=1000 " set mapping delays
-"set ttimeoutlen=0 " set key code delays
+" set timeoutlen=1000 " set mapping delays
+" set ttimeoutlen=0   " set key code delays
 augroup FastEscape
     autocmd!
     au InsertEnter * set timeoutlen=0
     au InsertLeave * set timeoutlen=1000
 augroup END
+
 
 "" Output result of an EX command into split buffer
 function! Output(cmd)
@@ -1224,6 +1061,7 @@ function! Output(cmd)
 endfunction
 command! -nargs=+ -complete=command Output call Output(<q-args>)
 
+
 "" Toggle zoom on window 
 " Zoom / Restore window. (make it the only window)
 function! s:ZoomToggle() abort
@@ -1240,6 +1078,7 @@ endfunction
 command! ZoomToggle call s:ZoomToggle()
 nnoremap <silent> <C-W>m :ZoomToggle<CR>
 
+
 "" Change window settings for BExec
 function! SetBexecSplitSize(...) " optional argument to set split width 
     let s:widthnr = get(a:, 1, g:bexec_splitsize)
@@ -1251,13 +1090,6 @@ function! SetBexecSplitSize(...) " optional argument to set split width
 endfunction
 call SetBexecSplitSize(g:bexec_splitsize)
 
-"" Check python file using checkio_client
-function! s:CheckioCheckCurrentFile(...) abort
-    let s:name = substitute(expand('%:r'), '_', '-', 'g') " e.g. the_warriors.py -> the-warriors
-    execute ':!pipenv run checkio check ' . s:name
-endfunction
-command! CheckioCheckCurrentFile call s:CheckioCheckCurrentFile()
-"nnoremap <silent> <leader>D :Output CheckioCheckCurrentFile<CR>
 
 "" Return to last edit position when opening files
 augroup return_to_last_edit_position
@@ -1268,9 +1100,9 @@ augroup return_to_last_edit_position
         \ endif
 augroup END
 
+
 "" Avoid scrolling when switching buffers
 " https://vim.fandom.com/wiki/Avoid_scrolling_when_switch_buffers
-
 " Save current view settings on a per-window, per-buffer basis.
 function! AutoSaveWinView()
     if !exists("w:SavedBufView")
@@ -1298,14 +1130,16 @@ if v:version >= 700
     autocmd BufEnter * call AutoRestoreWinView()
 endif
 
-"" Spell checking for markdown
+
+"" Spell check for markdown
 augroup markdown_spellcheck
   autocmd!
   "autocmd FileType markdown setlocal spell
   autocmd FileType markdown inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 augroup END
 
-"" Autocompile on save for latex
+
+"" Auto compile latex on save
 augroup compile_on_save_latex
     autocmd!
     autocmd FileType tex nnoremap <buffer> <Leader>w :w\|AsyncRun xelatex %<CR>
