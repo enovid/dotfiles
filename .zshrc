@@ -8,7 +8,6 @@ export ZSH="/home/enovid/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
 ZSH_THEME="theunraveler"
 
 # Set list of themes to pick from when loading at random
@@ -111,8 +110,7 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # FZF Config
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-#   follow symbolic links and don't exclude hidden file
+# follow symbolic links and don't exclude hidden file
 FD_OPTIONS="--hidden --follow --exclude .git --exclude node_modules --exclude .DS_Store --exclude '*.swp' --exclude Library --exclude private --exclude .virtualenvs"
 export FZF_DEFAULT_COMMAND="fd --type f $FD_OPTIONS"
 export FZF_CTRL_T_COMMAND="fd --type d $FD_OPTIONS"
