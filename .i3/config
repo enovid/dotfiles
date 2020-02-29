@@ -60,7 +60,6 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+b exec google-chrome-stable
 bindsym $mod+F3 exec pcmanfm
-# bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+F5 exec terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill compton
@@ -69,7 +68,6 @@ bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart du
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
-#bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 focus_follows_mouse no
@@ -185,12 +183,7 @@ bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
-# Copy and paste with mod key
-#bindsym --release $mod+v exec --no-startup-id xdotool key --clearmodifiers ctrl+v
-#bindsym --release $mod+c exec --no-startup-id xdotool key --clearmodifiers ctrl+c
-
 # Toggle toolbar visibility in Chrome
-bindsym $mod+Ctrl+f fullscreen disable
 bindsym --release $mod+Shift+f exec --no-startup-id "xdotool search --onlyvisible --class google-chrome key --clearmodifiers F11 && i3-msg fullscreen disable"
 
 # Send PageDown and PageUp
