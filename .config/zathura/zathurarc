@@ -3,10 +3,8 @@
 set selection-clipboard clipboard
 
 # TEXT COLOR:
-# darkcolor = FG, lightcolor = BG 
-set recolor-darkcolor "#D8DEE9"  # Nord - FG
-#set recolor-lightcolor "#2E3440" # Nord - BG
-set recolor-lightcolor "#1A1C1D" # Black - BG
+set recolor-darkcolor "#D8DEE9"  # FG COLOR
+set recolor-lightcolor "#1A1C1D" # BG COLOR
 
 # HIGHLIGHT COLOR:
 set highlight-color "#FFFF00"
@@ -15,14 +13,8 @@ set highlight-transparency 0.2
 
 set recolor "true"
 set recolor-keephue "true"
-#set font "Roboto Mono 16"
 set render-loading "false"
 set incremental-search true
 set notification-fg "#abb2bf"
 set notification-bg "#000"
 set guioptions 0 # hide the status bar
-
-# MAPPINGS:
-#map [fullscreen] <C-m> zoom in
-#map [fullscreen] m zoom best-fit
-#map [fullscreen] n zoom out
