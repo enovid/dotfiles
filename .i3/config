@@ -35,7 +35,7 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 #bindsym $mod+d exec --no-startup-id dmenu_recency
-bindsym $mod+d exec --no-startup-id rofi -show combi
+bindsym $mod+space exec --no-startup-id rofi -show combi
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -87,10 +87,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left 80 px
+bindsym $mod+Shift+j move down 80 px
+bindsym $mod+Shift+k move up 80 px
+bindsym $mod+Shift+l move right 80 px
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -104,8 +104,8 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
-#bindsym $mod+h split h;exec notify-send 'tile horizontally'
-#bindsym $mod+v split v;exec notify-send 'tile vertically'
+bindsym $mod+c split h;exec notify-send 'tile horizontally'
+bindsym $mod+v split v;exec notify-send 'tile vertically'
 bindsym $mod+q split toggle
 
 # toggle fullscreen mode for the focused container
@@ -120,7 +120,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+d focus mode_toggle
 
 # toggle sticky
 bindsym $mod+Shift+s sticky toggle
@@ -186,8 +186,8 @@ bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Copy and paste with mod key
-bindsym --release $mod+v exec --no-startup-id xdotool key --clearmodifiers ctrl+v
-bindsym --release $mod+c exec --no-startup-id xdotool key --clearmodifiers ctrl+c
+#bindsym --release $mod+v exec --no-startup-id xdotool key --clearmodifiers ctrl+v
+#bindsym --release $mod+c exec --no-startup-id xdotool key --clearmodifiers ctrl+c
 
 # Toggle toolbar visibility in Chrome
 bindsym $mod+Ctrl+f fullscreen disable
@@ -275,10 +275,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 5 px or 5 ppt
-        bindsym k resize grow height 5 px or 5 ppt
-        bindsym j resize shrink height 5 px or 5 ppt
-        bindsym l resize grow width 5 px or 5 ppt
+        bindsym h resize shrink width 80 px or 5 ppt
+        bindsym k resize grow height 80 px or 5 ppt
+        bindsym j resize shrink height 80 px or 5 ppt
+        bindsym l resize grow width 80 px or 5 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -442,4 +442,3 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
