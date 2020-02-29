@@ -10,5 +10,5 @@ My dotfiles for [Manjaro i3 community edition](https://manjaro.org/download/comm
  zathura    > document viewer
  ```
 
-## Usage
+# Usage
 To manage my dotfiles, I use the method described [here](https://www.atlassian.com/git/tutorials/dotfiles).
