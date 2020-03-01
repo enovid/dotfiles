@@ -13,7 +13,7 @@ Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'LukeSmithxyz/vimling' 
 Plug 'lambdalisue/suda.vim'
 let g:suda_smart_edit = 1
-
+Plug 'mboughaba/i3config.vim'
 
 "" Completion
 """ ultisnips
@@ -999,6 +999,7 @@ function! s:colorscheme_customize() abort
 
     if g:colors_name =~# 'plain'
         highlight ModeMsg guibg=NONE
+        highlight Search guifg=#FFFFFF
     endif
 endfunction
 
