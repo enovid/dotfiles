@@ -128,3 +128,7 @@ alias config='/usr/bin/git --git-dir=/home/enovid/.cfg/ --work-tree=/home/enovid
 
 # Allow RubyGems to be executed
 export PATH=$PATH:$(ruby -e 'puts Gem.user_dir')/bin
+
+# Use Nvim as manpager `:h Man`
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
