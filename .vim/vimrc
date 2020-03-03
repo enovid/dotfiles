@@ -147,7 +147,7 @@ Plug 'metakirby5/codi.vim'
 
 """ Show stdout in buffer
 Plug 'fboender/bexec'
-let g:bexec_interpreter="/usr/local/bin/python3"
+let g:bexec_interpreter="/usr/bin/python3"
 let g:bexec_splitdir='hor'
 let g:bexec_splitsize=''
 let g:bexec_outputscroll=1
@@ -951,6 +951,7 @@ function! s:colorscheme_customize() abort
         highlight StatusLine ctermbg=234 ctermfg=242
         highlight StatusLineNC ctermbg=234 ctermfg=237
         highlight VertSplit ctermfg=234 ctermbg=234
+        highlight Normal ctermbg=0
     endif
 
     if g:colors_name =~# 'amber' 
