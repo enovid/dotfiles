@@ -21,8 +21,8 @@ Plug 'SirVer/ultisnips'
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsExpandTrigger = '<c-;>'
-let g:UltiSnipsJumpForwardTrigger = '<c-]>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-[>'
+let g:UltiSnipsJumpForwardTrigger = '<c-l>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-h>'
 
 """ coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -374,6 +374,7 @@ let g:fzf_colors =
 " enable :Snippets command to search snippet descriptions
 command! -bar -bang Snippets call fzf#vim#snippets({'options': '-n ..'}, <bang>0)
 nnoremap <C-S> :Snippets<CR>
+nnoremap <Leader>s :Snippets<CR>
 
 
 "" easymotion
@@ -393,7 +394,7 @@ map  <Leader>e <Plug>(easymotion-bd-e)
 map  <Leader>E <Plug>(easymotion-bd-E)
 
 " Jump to any two characters on any window
-nmap <Leader>s <Plug>(easymotion-overwin-f2)
+"nmap <Leader>s <Plug>(easymotion-overwin-f2)
 
 
 "" haya14busa incsearch
