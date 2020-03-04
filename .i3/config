@@ -404,8 +404,8 @@ bindsym $mod+m bar mode toggle
   #client.placeholder      #000000 #0c0c0c #ffffff #000000 
 
   client.focused          #000000 #000000 #DDDDDD #DDDDDD
-  client.focused_inactive #BBBBBB #BBBBBB #1ABC9C #454948
-  client.unfocused        #DDDDDD #DDDDDD #1ABC9C #454948
+  client.focused_inactive #BBBBBB #454948 #DDDDDD #454948
+  client.unfocused        #DDDDDD #BBBBBB #FFFFFF #454948
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
   client.placeholder      #000000 #0c0c0c #ffffff #000000 
 
