@@ -108,6 +108,7 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias timer="python3 .i3/timer_bar.py"
 
 # FZF Config
 # follow symbolic links and don't exclude hidden file
