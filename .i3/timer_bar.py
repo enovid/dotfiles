@@ -25,7 +25,12 @@ def countdown(sec):
         bar = "[" + ''.join('=' for _ in range(completion_count)) + \
               ''.join(' ' for _ in range(bar_size - completion_count)) + "]"
         output = bar + time_str + "\n"
-        fifo.write(output)
+
+        try:
+            fifo.write(output)
+        except BrokenPipeError as e:
+            print(f'BrokenPipeError: {e}')
+
         sec -= 1
         time.sleep(1)
 
