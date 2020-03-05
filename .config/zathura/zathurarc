@@ -11,7 +11,7 @@ set highlight-color "#FFFF00"
 set highlight-active-color "#F0F"
 set highlight-transparency 0.2
 
-set recolor "true"
+#set recolor "true"
 set recolor-keephue "true"
 set render-loading "false"
 set incremental-search true
