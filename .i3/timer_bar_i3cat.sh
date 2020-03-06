@@ -1,6 +1,7 @@
 #!/bin/sh
 
-color='#2AA198'
+#color='#2AA198'
+color='#ffb243'
 fifo_name="/home/enovid/.timer_bar_cache"
 
 while :; do
