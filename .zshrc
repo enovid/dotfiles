@@ -109,6 +109,7 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias timer="python3 .i3/timer_bar.py"
+alias zf="zathura --fork"
 
 # FZF Config
 # follow symbolic links and don't exclude hidden file
