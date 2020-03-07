@@ -942,6 +942,15 @@ function! s:colorscheme_customize() abort
     highlight LineNr guibg=bg
     highlight CursorLineNr guibg=bg
 
+    if g:colors_name =~# 'base16-grayscale-dark' 
+        highlight MatchParen guifg=#000000
+    endif
+
+    if g:colors_name =~# 'base16-grayscale-light' 
+        highlight MatchParen guifg=#FFFFFF
+        "highlight MatchParen ctermfg=7 ctermbg=10 guifg=#464646 guibg=#e3e3e3
+    endif
+
     if g:colors_name =~# 'blaquemagick' 
         set notermguicolors
         highlight EndOfBuffer ctermfg=0
