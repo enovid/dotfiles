@@ -71,6 +71,9 @@ bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
+# Use mpv to open url on clipboard 
+bindsym $mod+o --release exec --no-startup-id mpv "$(xclip -out -selection clipboard)"
+
 focus_follows_mouse no
 
 # change focus
