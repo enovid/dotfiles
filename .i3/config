@@ -18,7 +18,6 @@ hide_edge_borders none
 bindsym $mod+u border none
 bindsym $mod+y border pixel 2
 bindsym $mod+Shift+n border normal
-bindsym $mod+n exec kitty --single-instance --listen-on unix:/tmp/mykitty nvim
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -29,6 +28,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec kitty --single-instance --listen-on unix:/tmp/mykitty
+bindsym $mod+n exec kitty --single-instance --listen-on unix:/tmp/mykitty nvim
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -396,7 +396,8 @@ bindsym $mod+m bar mode toggle
 
 # Theme colors
 # Wallpaper color (default for nitrogen): #002A36
-# class                   border  backgr. text    indic.   child_border
+# class                    border  backgr. text    indic.   child_border
+
   #client.focused          #556064 #556064 #80FFF9 #FDF6E3
   #client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
   #client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
