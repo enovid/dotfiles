@@ -29,12 +29,33 @@ function! s:OnExit(job_id, code, event) dict
   endif
 endfunction
 
+
 " Firenvim config
+
+" Use python filetype for jupyter notebook textareas
+au BufEnter localhost*.txt set filetype=python
+
 if exists('g:started_by_firenvim')
     set laststatus=0
-    set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20
+    set guifont:Inconsolata:h12
 else
     set laststatus=2
 endif
 
-nnoremap <Leader>G :set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20\|set ft=python<CR><CR>
+let g:firenvim_config = { 
+    \ 'globalSettings': {
+        \ 'alt': 'all',
+    \  },
+    \ 'localSettings': {
+        \ '.*': {
+            \ 'cmdline': 'firenvim',
+            \ 'priority': 0,
+            \ 'selector': 'textarea',
+            \ 'takeover': 'never',
+        \ },
+    \ }
+\ }
+
+let fc = g:firenvim_config['localSettings']
+let fc['http://localhost:.*'] = {'takeover': 'always', 'priority': 1}
+
