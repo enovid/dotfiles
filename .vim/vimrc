@@ -937,6 +937,7 @@ endfunction
 "" Functions called on changing colorscheme/filetype
 " Custom colorscheme modifications applied when colorscheme is changed
 function! s:colorscheme_customize() abort
+    call KittyUpdateTerminalColorscheme()
     " Hide tildes in LineNr column
     highlight EndOfBuffer guifg=bg
     highlight LineNr guibg=bg
