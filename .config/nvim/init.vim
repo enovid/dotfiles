@@ -38,6 +38,7 @@ au BufEnter localhost*.txt set filetype=python
 if exists('g:started_by_firenvim')
     set laststatus=0
     set guifont:Inconsolata:h12
+    nnoremap <C-CR> :wq<CR>
 else
     set laststatus=2
 endif
@@ -48,7 +49,7 @@ let g:firenvim_config = {
     \  },
     \ 'localSettings': {
         \ '.*': {
-            \ 'cmdline': 'firenvim',
+            \ 'cmdline': 'neovim',
             \ 'priority': 0,
             \ 'selector': 'textarea',
             \ 'takeover': 'never',
