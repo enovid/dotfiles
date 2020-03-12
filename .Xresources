@@ -236,12 +236,12 @@ URxvt.keysym.Shift-Control-Down:  \033[1;6B
 ! -xos4-terminus-bold-r-normal--28-280-72-72-c-140-iso10646-1
 ! -xos4-terminus-bold-r-normal--32-320-72-72-c-160-iso10646-1
 
-! Light
-i3wm.focused:           #000000
-i3wm.focusedInactive:   #454948 
-i3wm.unfocused:         #BBBBBB 
-i3wm.text:              #FFFFFF 
-i3wm.indicator:         #DDDDDD
+!! Light
+!i3wm.focused:           #000000
+!i3wm.focusedInactive:   #454948 
+!i3wm.unfocused:         #BBBBBB 
+!i3wm.text:              #FFFFFF 
+!i3wm.indicator:         #DDDDDD
 
 !! Dark
 !i3wm.focused:           #556064 
