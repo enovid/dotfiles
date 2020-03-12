@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+# Temporarily add color variables to Xresources for use in i3
+#
+
+usage() { >&2 echo "Usage: set-theme [-light] [-dark]" ; exit 1 ; }
+
+change_colors () {
+    DIR="$( cd "$( dirname "$0" )" && pwd )" # Path to this script
+    COLORS="$DIR/$1"                         # Path to file containing colors
+    # Make temp file with added color variables
+    cat ~/.Xresources $COLORS > /tmp/xresources
+    # Source tmp file as if it were .Xresources
+    xrdb /tmp/xresources
+    # Restart i3 to apply color changes
+    i3-msg restart
+}
+
+case $1 in
+    -light)
+        change_colors light
+        ;;
+    -dark)
+        change_colors dark
+        ;;
+     *)
+         usage
+esac
+
+
