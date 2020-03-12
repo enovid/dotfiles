@@ -6,7 +6,8 @@
 usage() { >&2 echo "Usage: set-theme [-light] [-dark]" ; exit 1 ; }
 
 change_colors () {
-    DIR="$( cd "$( dirname "$0" )" && pwd )" # Path to this script
+    SRC="$(realpath $0)"                     # Path to this script
+    DIR=${SRC%/*}/
     COLORS="$DIR/$1"                         # Path to file containing colors
     # Make temp file with added color variables
     cat ~/.Xresources $COLORS > /tmp/xresources
