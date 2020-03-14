@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# Monitor battery level and notify when low.
+#
+BATPATH=/sys/class/power_supply/BAT0
+BAT_MAX=$BATPATH/charge_full
+BAT_NOW=$BATPATH/charge_now
+
+PERCENT_REMAINING=$((100 * $(cat $BAT_NOW) / $(cat $BAT_MAX)))
+if [ $PERCENT_REMAINING -lt 20 ];
+then
+    notify-send "Battery low"
+fi
