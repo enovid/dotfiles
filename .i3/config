@@ -204,6 +204,10 @@ bindsym --release Mod1+j exec --no-startup-id xdotool key --clearmodifiers Down
 bindsym --release Mod1+k exec --no-startup-id xdotool key --clearmodifiers Up
 bindsym --release Mod1+l exec --no-startup-id xdotool key --clearmodifiers Right
 
+# Take screenshot
+bindsym $mod+p exec maim -su | xclip -selection clipboard -t image/png
+bindsym $mod+Shift+p exec maim -u | xclip -selection clipboard -t image/png
+
 # Open applications on specific workspaces
 # assign [class="Thunderbird"] $ws1
 # assign [class="Pale moon"] $ws2
@@ -430,8 +434,8 @@ bindsym $mod+m bar mode toggle
 
   # Set colors from Xresources
   set_from_resource $focused         i3wm.focused           #000000
-  set_from_resource $focusedInactive i3wm.focusedInactive   #454948
-  set_from_resource $unfocused       i3wm.unfocused         #BBBBBB
+  set_from_resource $focusedInactive i3wm.focusedInactive   #AAAAAA
+  set_from_resource $unfocused       i3wm.unfocused         #DDDDDD
   set_from_resource $text            i3wm.text              #FFFFFF
   set_from_resource $indicator       i3wm.indicator         #DDDDDD
 
