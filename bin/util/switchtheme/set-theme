@@ -34,6 +34,7 @@ case $1 in
         # Change colors in Kitty
         cat $CDIR/base16-grayscale-light.config > $KDIR/colors.conf
         $REL
+        kitty @ --to unix:/tmp/mykitty set-colors -c cursor_text_color=#FFFFFF cursor=#000000
         ;;
     -dark)
         change_i3_colors dark
@@ -42,6 +43,7 @@ case $1 in
         # Change colors in Kitty
         cat $CDIR/base16-grayscale-dark.config > $KDIR/colors.conf
         $REL
+        kitty @ --to unix:/tmp/mykitty set-colors -c cursor_text_color=#000000 cursor=#DDDDDD
         ;;
      *)
          usage
