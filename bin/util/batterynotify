@@ -7,7 +7,7 @@ BAT_MAX=$BATPATH/charge_full
 BAT_NOW=$BATPATH/charge_now
 
 PERCENT_REMAINING=$((100 * $(cat $BAT_NOW) / $(cat $BAT_MAX)))
-if [ $PERCENT_REMAINING -lt 20 ];
+if [ $PERCENT_REMAINING -lt 15 ];
 then
-    notify-send "Battery low"
+    notify-send --urgency critical "Battery low"
 fi
