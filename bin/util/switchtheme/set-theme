@@ -4,7 +4,7 @@
 # Programs affected: i3wm, Kitty, system wallpaper (hsetroot)
 #
 
-usage() { >&2 echo "Usage: set-theme [-light] [-dark]" ; exit 1 ; }
+usage() { >&2 echo "Usage: set-theme [light] [dark]" ; exit 1 ; }
 
 # Temporarily add color variables to Xresources for use in i3
 change_i3_colors () {
@@ -27,7 +27,7 @@ CDIR="/usr/share/kitty-cat/colors"
 REL="kitty @ --to unix:/tmp/mykitty set-colors --all ~/.config/kitty/colors.conf" 
 
 case $1 in
-    -light)
+     light)
         change_i3_colors light
         # Change wallpaper
         hsetroot -solid "#FFFFFF" 
@@ -36,7 +36,7 @@ case $1 in
         $REL
         kitty @ --to unix:/tmp/mykitty set-colors -c cursor_text_color=#FFFFFF cursor=#000000
         ;;
-    -dark)
+     dark)
         change_i3_colors dark
         # Change wallpaper
         hsetroot -solid "#000000" 
