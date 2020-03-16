@@ -6,8 +6,13 @@ BATPATH=/sys/class/power_supply/BAT0
 BAT_MAX=$BATPATH/charge_full
 BAT_NOW=$BATPATH/charge_now
 
-PERCENT_REMAINING=$((100 * $(cat $BAT_NOW) / $(cat $BAT_MAX)))
-if [ $PERCENT_REMAINING -lt 15 ];
-then
-    notify-send --urgency critical "Battery low"
-fi
+while :; do 
+    read -r full < $BAT_MAX
+    read -r now < $BAT_NOW
+    PERCENT_REMAINING=$((100 * $now / $full))
+    if [ $PERCENT_REMAINING -lt 20 ];
+    then
+        dunstify --urgency critical -h string:x-canonical-private-synchronous:battery "Battery low $PERCENT_REMAINING%"
+    fi
+    sleep 10
+done
