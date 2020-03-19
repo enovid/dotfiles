@@ -5,26 +5,29 @@
 BATPATH=/sys/class/power_supply/BAT0
 BAT_MAX=$BATPATH/charge_full
 BAT_NOW=$BATPATH/charge_now
+BAT_STATUS=$BATPATH/status
 
-#TODO: Don't show notication when charging
 while :; do 
-    read -r full < $BAT_MAX
-    read -r now < $BAT_NOW
-    PERCENT_REMAINING=$((100 * $now / $full))
-    
-    # Notify at intervals of 10% e.g. 90, 80, 70 ...
-    PRECISION=3
-    X=$(echo "scale=$PRECISION; $now/$full" | bc -l)
-    X=$(echo "($X * (10 ^ $PRECISION))" | bc -l)
-    X=${X%.*}
-    MOD=$(echo "10 ^ ($PRECISION - 1)" | bc -l)
-    [ $(($X%($MOD))) -eq 0 ] && \
-        dunstify -t 5000 "Battery remaining $PERCENT_REMAINING%"
+    read -r status < $BAT_STATUS
+    if [ "$status" = "Discharging" ]; then
+        read -r full < $BAT_MAX
+        read -r now < $BAT_NOW
+        PERCENT_REMAINING=$((100 * $now / $full))
+        
+        # Notify at intervals of 10% e.g. 90, 80, 70 ...
+        PRECISION=3
+        X=$(echo "scale=$PRECISION; $now/$full" | bc -l)
+        X=$(echo "($X * (10 ^ $PRECISION))" | bc -l)
+        X=${X%.*}
+        MOD=$(echo "10 ^ ($PRECISION - 1)" | bc -l)
+        [ $(($X%($MOD))) -eq 0 ] && \
+            dunstify -t 5000 "Battery remaining $PERCENT_REMAINING%"
 
-    # Critical notification when battery below 20%
-    if [ $PERCENT_REMAINING -lt 20 ];
-    then
-        dunstify --urgency critical -h string:x-canonical-private-synchronous:battery "Battery low $PERCENT_REMAINING%"
+        # Critical notification when battery below 20%
+        if [ $PERCENT_REMAINING -lt 20 ];
+        then
+            dunstify --urgency critical -h string:x-canonical-private-synchronous:battery "Battery low $PERCENT_REMAINING%"
+        fi
     fi
 
     sleep 10
