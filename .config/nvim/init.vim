@@ -38,7 +38,9 @@ au BufEnter localhost*.txt set filetype=python
 if exists('g:started_by_firenvim')
     set laststatus=0
     set guifont:Inconsolata:h12
+    set background=light
     nnoremap <C-CR> :wq<CR>
+    nnoremap <Leader>M :set ft=markdown\|set spell<CR>
 else
     set laststatus=2
 endif
