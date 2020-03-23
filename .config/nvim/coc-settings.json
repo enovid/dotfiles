@@ -1,3 +1,4 @@
 {
-    "suggest.maxCompleteItemCount": 15
+    "suggest.maxCompleteItemCount": 15,
+    "python.setInterpreter": "/home/enovid/.env/bin/python3"
 }
