@@ -148,7 +148,8 @@ Plug 'metakirby5/codi.vim'
 
 """ Show stdout in buffer
 Plug 'fboender/bexec'
-let g:bexec_interpreter="/usr/bin/python3"
+"let g:bexec_interpreter="/usr/bin/python3"
+let g:bexec_interpreter="/home/enovid/.env/bin/python3"
 let g:bexec_splitdir='hor'
 let g:bexec_splitsize=''
 let g:bexec_outputscroll=1
@@ -242,6 +243,7 @@ Plug 'xero/blaquemagick.vim'
 Plug 'xero/sourcerer.vim'
 Plug 'NerdyPepper/vim-colors-plain', {'branch': 'duotone'}
 Plug 'hardselius/warlock'
+Plug 'iCyMind/NeoSolarized'
 
 "" Unused
 "Plug 'amix/vim-zenroom2'
@@ -625,6 +627,9 @@ set undodir=~/.vim/undodir
 " open vertical split to the right
 set splitright
 
+" don't put tildes at the start of empty lines at the end of a buffer
+set fillchars=eob:\ 
+
 
 "" GUI, cursor, font
 if has("gui_running")
@@ -757,9 +762,9 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 augroup python_run_mappings
     autocmd!
     "autocmd FileType python nnoremap <Leader>r :w\|!python3 %<CR>
-    autocmd FileType python nnoremap <silent> <Leader>d :AsyncRun -mode=terminal python3 %<CR>
+    autocmd FileType python nnoremap <silent> <Leader>r :w\|AsyncRun -mode=terminal python3 %<CR>
     autocmd FileType python nnoremap <silent> <Leader>R :AsyncRun -mode=terminal python3<CR>
-    autocmd FileType python nnoremap <silent> <Leader>r :w\|Goyo!\|Bexec()<CR>
+    autocmd FileType python nnoremap <silent> <Leader>d :w\|Goyo!\|Bexec()<CR>
     autocmd FileType python vnoremap <silent> <Leader>d :w\|BexecVisual()<CR>
     autocmd FileType python nnoremap <silent> <leader>D :AsyncRun -mode=terminal python3 -m pudb %:p<CR>
 augroup END
@@ -938,10 +943,18 @@ endfunction
 " Custom colorscheme modifications applied when colorscheme is changed
 function! s:colorscheme_customize() abort
     call KittyUpdateTerminalColorscheme()
-    " Hide tildes in LineNr column
-    highlight EndOfBuffer guifg=bg
     highlight LineNr guibg=bg
     highlight CursorLineNr guibg=bg
+
+    if g:colors_name =~# 'sourcerer' 
+        set notermguicolors
+        highlight LineNr ctermbg=NONE
+    endif
+
+
+    if g:colors_name =~# 'solarized8_high' 
+        highlight VertSplit guifg=#93a1a1
+    endif
 
     if g:colors_name =~# 'base16-grayscale-dark' 
         highlight MatchParen guifg=#000000
@@ -949,12 +962,10 @@ function! s:colorscheme_customize() abort
 
     if g:colors_name =~# 'base16-grayscale-light' 
         highlight MatchParen guifg=#FFFFFF
-        "highlight MatchParen ctermfg=7 ctermbg=10 guifg=#464646 guibg=#e3e3e3
     endif
 
     if g:colors_name =~# 'blaquemagick' 
         set notermguicolors
-        highlight EndOfBuffer ctermfg=0
         highlight LineNr ctermbg=NONE
         highlight CursorLineNr ctermfg=249 ctermbg=NONE
         highlight IncSearch ctermfg=16 ctermbg=66
@@ -963,7 +974,6 @@ function! s:colorscheme_customize() abort
         highlight StatusLine ctermbg=234 ctermfg=242
         highlight StatusLineNC ctermbg=234 ctermfg=237
         highlight VertSplit ctermfg=234 ctermbg=234
-        "highlight Normal ctermbg=0
     endif
 
     if g:colors_name =~# 'amber' 
