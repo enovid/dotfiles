@@ -6,6 +6,9 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 set inccommand=nosplit
 
+" don't put tildes at the start of empty lines at the end of a buffer
+set fillchars=eob:\ 
+
 " Open lazygit
 nnoremap <silent> <Leader>' :call OpenTerm('lazygit')<CR>
 

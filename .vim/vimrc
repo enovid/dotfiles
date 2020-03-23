@@ -627,9 +627,6 @@ set undodir=~/.vim/undodir
 " open vertical split to the right
 set splitright
 
-" don't put tildes at the start of empty lines at the end of a buffer
-set fillchars=eob:\ 
-
 
 "" GUI, cursor, font
 if has("gui_running")
