@@ -20,6 +20,7 @@ while :; do
         X=$(echo "($X * (10 ^ $PRECISION))" | bc -l)
         X=${X%.*}
         MOD=$(echo "10 ^ ($PRECISION - 1)" | bc -l)
+        [ $PERCENT_REMAINING -lt 100 ] && \
         [ $(($X%($MOD))) -eq 0 ] && \
             dunstify -t 5000 "Battery remaining $PERCENT_REMAINING%"
 
