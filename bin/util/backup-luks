@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# Decrypt and mount external partition and backup system files.
+#
+sudo cryptsetup open --type=luks "$1" backup &&
+
+sudo mount /dev/mapper/backup /mnt &&
+backup /mnt
+
+# Clean up
+sudo umount /mnt
+sudo cryptsetup close /dev/mapper/backup

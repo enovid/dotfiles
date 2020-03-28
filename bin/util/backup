@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# Backup system files to external storage.
+#
+
+# Create backup archive
+sudo -E borg create \
+    -spC zstd \
+    --exclude-from ~/Documents/backup-exclude.txt \
+    "$1"::"$(hostname)"-"$(date --iso-8601)" /
+
