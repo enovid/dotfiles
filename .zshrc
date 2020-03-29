@@ -111,6 +111,7 @@ fi
 alias timer="python3 .i3/timer_bar.py"
 alias zf="zathura --fork"
 alias kc="kitty-cat"
+alias unlock='export BW_SESSION=$(bw unlock --raw)'
 
 # FZF Config
 # follow symbolic links and don't exclude hidden file
