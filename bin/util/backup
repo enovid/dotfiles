@@ -3,7 +3,7 @@
 # Backup system files to external storage using borg.
 #
 PASS_FILE="$HOME/.secrets/borg-passphrase.gpg"
-BORG_PASSPHRASE="$(gpg -d "$PASS_FILE")"
+BORG_PASSPHRASE="$(gpg -d "$PASS_FILE" 2>/dev/null)"
 
 # Get borg passphrase if it exists
 [ -f "$PASS_FILE" ] && export BORG_PASSPHRASE

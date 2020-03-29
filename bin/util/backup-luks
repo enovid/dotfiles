@@ -6,7 +6,8 @@ PASS_FILE="$HOME/.secrets/luks-passphrase.gpg"
 
 # Get LUKS passphrase and open LUKS partition
 [ -f "$PASS_FILE" ] &&
-gpg --batch -d "$PASS_FILE" | 
+bw get password gpg_passphrase | 
+gpg --batch --passphrase-fd 0 --pinentry-mode loopback -d "$PASS_FILE" 2>/dev/null | 
 sudo cryptsetup open --type=luks "$1" backup ||
 sudo cryptsetup open --type=luks "$1" backup &&
 
