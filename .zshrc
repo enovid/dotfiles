@@ -135,3 +135,6 @@ export PATH=$PATH:$(ruby -e 'puts Gem.user_dir')/bin
 # Use Nvim as manpager `:h Man`
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
+
+# gpg-agent
+export GPG_TTY=$(tty)
