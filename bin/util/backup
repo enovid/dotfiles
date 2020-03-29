@@ -1,7 +1,12 @@
 #!/bin/sh
 #
-# Backup system files to external storage.
+# Backup system files to external storage using borg.
 #
+PASS_FILE="$HOME/.secrets/borg-passphrase.gpg"
+BORG_PASSPHRASE="$(gpg -d "$PASS_FILE")"
+
+# Get borg passphrase if it exists
+[ -f "$PASS_FILE" ] && export BORG_PASSPHRASE
 
 # Create backup archive
 sudo -E borg create \

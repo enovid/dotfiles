@@ -2,6 +2,12 @@
 #
 # Decrypt and mount external partition and backup system files.
 #
+PASS_FILE="$HOME/.secrets/luks-passphrase.gpg"
+
+# Get LUKS passphrase and open LUKS partition
+[ -f "$PASS_FILE" ] &&
+gpg --batch -d "$PASS_FILE" | 
+sudo cryptsetup open --type=luks "$1" backup ||
 sudo cryptsetup open --type=luks "$1" backup &&
 
 sudo mount /dev/mapper/backup /mnt &&
