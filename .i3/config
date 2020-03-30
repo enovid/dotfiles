@@ -435,12 +435,19 @@ bindsym $mod+m bar mode toggle
   #client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
   #client.unfocused        #556064 #556064 #80FFF9 #FDF6E3
 
-  # Set colors from Xresources
-  set_from_resource $focused         i3wm.focused           #000000
-  set_from_resource $focusedInactive i3wm.focusedInactive   #AAAAAA
-  set_from_resource $unfocused       i3wm.unfocused         #DDDDDD
-  set_from_resource $text            i3wm.text              #FFFFFF
-  set_from_resource $indicator       i3wm.indicator         #DDDDDD
+  ## Set colors from Xresources (default light)
+  #set_from_resource $focused         i3wm.focused           #000000
+  #set_from_resource $focusedInactive i3wm.focusedInactive   #AAAAAA
+  #set_from_resource $unfocused       i3wm.unfocused         #DDDDDD
+  #set_from_resource $text            i3wm.text              #FFFFFF
+  #set_from_resource $indicator       i3wm.indicator         #DDDDDD
+
+  # Set colors from Xresources (default dark)
+  set_from_resource $focused         i3wm.focused           #556064
+  set_from_resource $focusedInactive i3wm.focusedInactive   #2F3D44
+  set_from_resource $unfocused       i3wm.unfocused         #2F3D44
+  set_from_resource $text            i3wm.text              #80FFF9
+  set_from_resource $indicator       i3wm.indicator         #FDF6E3
 
   # class                 border           backgr.          text   indicator 
   client.focused          $focused         $focused         $text  $indicator       
