@@ -1,0 +1,5 @@
+i3wm.focused:           #7a2000
+i3wm.focusedInactive:   #FFFFFF 
+i3wm.unfocused:         #878787 
+i3wm.text:              #000000 
+i3wm.indicator:         #FDF6E3
