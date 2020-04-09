@@ -153,6 +153,10 @@ bindsym $mod+Ctrl+h workspace prev;\
 exec "dunstify -t 2000 -h string:x-canonical-private-synchronous:workspace $(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).name')"
 bindsym $mod+Ctrl+l workspace next;\
 exec "dunstify -t 2000 -h string:x-canonical-private-synchronous:workspace $(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).name')"
+bindsym $mod+Ctrl+a workspace prev;\
+exec "dunstify -t 2000 -h string:x-canonical-private-synchronous:workspace $(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).name')"
+bindsym $mod+Ctrl+d workspace next;\
+exec "dunstify -t 2000 -h string:x-canonical-private-synchronous:workspace $(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).name')"
 
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use
