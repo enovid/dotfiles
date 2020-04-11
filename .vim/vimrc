@@ -148,8 +148,8 @@ Plug 'metakirby5/codi.vim'
 
 """ Show stdout in buffer
 Plug 'fboender/bexec'
-"let g:bexec_interpreter="/usr/bin/python3"
-let g:bexec_interpreter="/home/enovid/.env/bin/python3"
+let g:bexec_interpreter="/usr/bin/python"
+"let g:bexec_interpreter="/home/enovid/.env/bin/python3"
 let g:bexec_splitdir='hor'
 let g:bexec_splitsize=''
 let g:bexec_outputscroll=1
@@ -662,11 +662,8 @@ endif
 
 
 "" Colorscheme (Active)
-"set notermguicolors
-"set background=dark
-"colorscheme blaquemagick
-"set background=light
-"colorscheme plain
+set notermguicolors
+colorscheme sourcerer
 
 
 """"""""""""""
