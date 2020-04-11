@@ -111,17 +111,17 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
-bindsym $mod+c split h;exec notify-send 'tile horizontally'
-bindsym $mod+v split v;exec notify-send 'tile vertically'
+bindsym $mod+comma split h;exec notify-send 'tile horizontally'
+bindsym $mod+period split v;exec notify-send 'tile vertically'
 bindsym $mod+q split toggle
 
 # toggle fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+apostrophe layout stacking
+bindsym $mod+semicolon layout tabbed
+bindsym $mod+slash layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
