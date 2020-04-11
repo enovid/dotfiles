@@ -64,4 +64,4 @@ let g:firenvim_config = {
 
 let fc = g:firenvim_config['localSettings']
 let fc['http://localhost:.*'] = {'takeover': 'always', 'priority': 1}
-
+let fc['https://binarysearch.io/*'] = {'takeover': 'always', 'priority': 1}
