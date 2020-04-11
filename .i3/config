@@ -258,6 +258,9 @@ for_window [class="Xfburn"] floating enable
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
+# switch to workspace with urgent window
+bindsym $mod+x [urgent=latest] focus
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
