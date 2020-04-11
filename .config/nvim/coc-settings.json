@@ -1,4 +1,5 @@
 {
     "suggest.maxCompleteItemCount": 15,
-    "python.setInterpreter": "/home/enovid/.env/bin/python3"
+    "python.setInterpreter": "/usr/bin/python",
+    "python.jediEnabled": false
 }
