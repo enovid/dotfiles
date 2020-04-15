@@ -392,32 +392,16 @@ bar {
 	strip_workspace_numbers yes
 
     colors {
-        #background #222D31
-        #statusline #F9FAF9
-        #separator  #454947
         background #000000
         statusline #F9FAF9
         separator  #454947
 
         #                  border  backgr. text
-        #focused_workspace  #F9FAF9 #16a085 #292F34
-        #active_workspace   #595B5B #353836 #FDF6E3
-        #inactive_workspace #595B5B #222D31 #EEE8D5
-        #binding_mode       #16a085 #2C2C2C #F9FAF9
-        #urgent_workspace   #16a085 #FDF6E3 #E5201D
-
-        #focused_workspace  #337336 #142d16 #87ca8b
-        focused_workspace  #d17c00 #5b3900 #ffb243
-        active_workspace   #595B5B #353836 #FDF6E3
-        inactive_workspace #595B5B #222D31 #EEE8D5
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
-
-        #  border  bg        text
-        # #337336 #142d16 #87ca8b
-        # #d17c00 #5b3900 #ffb243
-        # #bc105d #3c0719 #f160a1
-
+        focused_workspace  #000000 #000000 #ffffff
+        active_workspace   #000000 #000000 #FDF6E3
+        inactive_workspace #000000 #000000 #595B5B 
+        binding_mode       #d17c00 #5b3900 #ffb243
+        urgent_workspace   #bc105d #3c0719 #f160a1
     }
 }
 
