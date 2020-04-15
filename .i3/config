@@ -371,6 +371,11 @@ set_from_resource $term_color13    color13
 set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 
+
+##########################
+### Settings for i3bar ###
+##########################
+
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	i3bar_command i3bar
@@ -380,8 +385,7 @@ bar {
 
 	bindsym button4 nop
 	bindsym button5 nop
-        #   font xft:URWGothic-Book 11
-        font pango: Inconsolata 10
+        font pango: Inconsolata 9
 	strip_workspace_numbers yes
 
     colors {
