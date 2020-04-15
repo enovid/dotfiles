@@ -312,7 +312,6 @@ mode "resize" {
         bindsym $mod+Shift+k move up 80 px
         bindsym $mod+Shift+l move right 80 px
 
-
         # exit resize mode: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -375,15 +374,9 @@ set_from_resource $term_color15    color15
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	i3bar_command i3bar
-        #status_command i3status
         status_command i3cat
 	position bottom
         modifier none
-
-
-## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-#	tray_output primary
-#	tray_output eDP1
 
 	bindsym button4 nop
 	bindsym button5 nop
@@ -408,56 +401,30 @@ bar {
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
 
-# Theme colors
-# Wallpaper color (default for nitrogen): #002A36
-# class                    border  backgr. text    indic.   child_border
 
-  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-  client.placeholder      #000000 #0c0c0c #ffffff #000000 
-  client.background       #2B2C2B
+#####################
+### Theme colors  ###
+#####################
 
-  ## Dark default
-  #client.focused          #556064 #556064 #80FFF9 #FDF6E3
-  #client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-  #client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
+# class                 border  backgr. text    indic.   child_border
+client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
+client.placeholder      #000000 #0c0c0c #ffffff #000000 
+client.background       #2B2C2B
 
-  ## Light
-  #client.focused          #000000 #000000 #DDDDDD #DDDDDD
-  #client.focused_inactive #BBBBBB #454948 #DDDDDD #454948
-  #client.unfocused        #DDDDDD #BBBBBB #FFFFFF #454948
+# Set colors from Xresources (defaults in last column)
+set_from_resource $focused             i3wm.focused             #556064
+set_from_resource $focusedInactive     i3wm.focusedInactive     #2F3D44
+set_from_resource $unfocused           i3wm.unfocused           #2F3D44
+set_from_resource $textFocused         i3wm.textFocused         #80FFF9
+set_from_resource $textFocusedInactive i3wm.textFocusedInactive #80FFF9
+set_from_resource $textUnfocused       i3wm.textUnfocused       #80FFF9
+set_from_resource $indicator           i3wm.indicator           #FDF6E3
 
-  ## Nord
-  #client.focused          #DDDDDD #BBBBBB #FFFFFF #454948
-  #client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-  #client.unfocused        #556064 #556064 #80FFF9 #FDF6E3
+# class                 border           backgr.          text                 indicator 
+client.focused          $focused         $focused         $textFocused         $indicator
+client.focused_inactive $focusedInactive $focusedInactive $textFocusedInactive $indicator
+client.unfocused        $unfocused       $unfocused       $textUnfocused       $indicator
 
-  ## Set colors from Xresources (default light)
-  #set_from_resource $focused         i3wm.focused           #000000
-  #set_from_resource $focusedInactive i3wm.focusedInactive   #AAAAAA
-  #set_from_resource $unfocused       i3wm.unfocused         #DDDDDD
-  #set_from_resource $text            i3wm.text              #FFFFFF
-  #set_from_resource $indicator       i3wm.indicator         #DDDDDD
-
-  # Set colors from Xresources (default dark)
-  set_from_resource $focused             i3wm.focused             #556064
-  set_from_resource $focusedInactive     i3wm.focusedInactive     #2F3D44
-  set_from_resource $unfocused           i3wm.unfocused           #2F3D44
-  set_from_resource $textFocused         i3wm.textFocused         #80FFF9
-  set_from_resource $textFocusedInactive i3wm.textFocusedInactive #80FFF9
-  set_from_resource $textUnfocused       i3wm.textUnfocused       #80FFF9
-  set_from_resource $indicator           i3wm.indicator           #FDF6E3
-
-  # class                 border           backgr.          text                 indicator 
-  client.focused          $focused         $focused         $textFocused         $indicator
-  client.focused_inactive $focusedInactive $focusedInactive $textFocusedInactive $indicator
-  client.unfocused        $unfocused       $unfocused       $textUnfocused       $indicator
-
-  ## class                 border  backgr. text indicator child_border
-  #client.urgent           $bg     $bg     $fg  $bg       $bg
-  #client.placeholder      $bg     $bg     $fg  $bg       $bg
-  #client.background       $bg
-  ## PROTIP: You can also dynamically set dmenu's colors this way:
-  #bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
 
 #############################
 ### settings for i3-gaps: ###
