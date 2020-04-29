@@ -1158,5 +1158,5 @@ augroup END
 "" Auto compile latex on save
 augroup compile_on_save_latex
     autocmd!
-    autocmd FileType tex nnoremap <buffer> <Leader>w :w\|AsyncRun xelatex %<CR>
+    autocmd FileType tex nnoremap <buffer> <Leader>w :w\|AsyncRun xelatex -interaction=nonstopmode %<CR>
 augroup END
