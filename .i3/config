@@ -300,6 +300,19 @@ mode "resize" {
         bindsym j resize shrink height 80 px or 5 ppt
         bindsym l resize grow width 80 px or 5 ppt
 
+        bindsym Shift+l resize grow width 80 px or 5 ppt; move left 40px
+        bindsym Shift+h resize shrink width 80 px or 5 ppt; move right 40px
+        bindsym Shift+k resize grow height 80 px or 5 ppt; move up 40px
+        bindsym Shift+j resize shrink height 80 px or 5 ppt; move down 40px
+
+        # resize both height and width
+        bindsym m resize grow height 80 px or 5 ppt;\
+                  resize grow width 80 px or 5 ppt;\
+                  move left 40 px
+        bindsym n resize shrink height 80 px or 5 ppt;\
+                  resize shrink width 80 px or 5 ppt;\
+                  move right 40 px
+
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Up resize grow height 10 px or 10 ppt
@@ -336,6 +349,7 @@ exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec --no-startup-id batterynotify
+exec_always --no-startup-id autotiling
 
 # Rebind capslock and return 
 exec --no-startup-id "xcape -e 'Control_L=Escape;Control_R=Return'"
@@ -385,7 +399,7 @@ bar {
 
 	bindsym button4 nop
 	bindsym button5 nop
-        font pango: Inconsolata 9
+        font pango: Inconsolata, Icons 9
 	strip_workspace_numbers yes
 
     colors {
@@ -425,9 +439,9 @@ set_from_resource $textUnfocused       i3wm.textUnfocused       #80FFF9
 set_from_resource $indicator           i3wm.indicator           #FDF6E3
 
 # class                 border           backgr.          text                 indicator 
-client.focused          $focused         $focused         $textFocused         $indicator
-client.focused_inactive $focusedInactive $focusedInactive $textFocusedInactive $indicator
-client.unfocused        $unfocused       $unfocused       $textUnfocused       $indicator
+client.focused          $focused         $focused         $textFocused         $focused
+client.focused_inactive $focusedInactive $focusedInactive $textFocusedInactive $focusedInactive
+client.unfocused        $unfocused       $unfocused       $textUnfocused       $unfocused
 
 
 #############################
