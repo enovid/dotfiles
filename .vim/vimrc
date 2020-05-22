@@ -18,12 +18,12 @@ Plug 'szymonmaszke/vimpyter'
 
 "" Completion
 """ ultisnips
-Plug 'SirVer/ultisnips'
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
-let g:UltiSnipsUsePythonVersion = 3
-let g:UltiSnipsExpandTrigger = '<c-;>'
-let g:UltiSnipsJumpForwardTrigger = '<c-l>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-h>'
+"Plug 'SirVer/ultisnips'
+"let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
+"let g:UltiSnipsUsePythonVersion = 3
+"let g:UltiSnipsExpandTrigger = '<c-;>'
+"let g:UltiSnipsJumpForwardTrigger = '<c-l>'
+"let g:UltiSnipsJumpBackwardTrigger = '<c-h>'
 
 """ coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
