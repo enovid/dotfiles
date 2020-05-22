@@ -17,7 +17,7 @@ set render-loading "false"
 set incremental-search true
 set notification-fg "#abb2bf"
 set notification-bg "#000"
-set guioptions 0 # hide the status bar
+#set guioptions 0 # hide the status bar
 
 # Mappings
 map <C-e> scroll half-up
