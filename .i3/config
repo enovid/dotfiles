@@ -350,7 +350,7 @@ exec --no-startup-id xautolock -time 20 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec --no-startup-id batterynotify
-#exec_always --no-startup-id autotiling
+exec_always --no-startup-id autotiling
 
 # Rebind capslock and return 
 exec --no-startup-id "xcape -e 'Control_L=Escape;Control_R=Return'"
