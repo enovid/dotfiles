@@ -15,6 +15,9 @@ Plug 'lambdalisue/suda.vim'
 let g:suda_smart_edit = 1
 Plug 'mboughaba/i3config.vim'
 Plug 'szymonmaszke/vimpyter'
+Plug 'wellle/context.vim'
+let g:context_enabled = 0
+let g:context_highlight_tag = '<hide>'
 
 "" Completion
 """ ultisnips
@@ -248,8 +251,6 @@ Plug 'iCyMind/NeoSolarized'
 "" Unused
 "Plug 'amix/vim-zenroom2'
 "Plug 'andreypopp/vim-colors-plain'
-"Plug 'wellle/context.vim'
-"let g:context_enabled = 0
 "Plug 'camspiers/animate.vim'
 "Plug 'camspiers/lens.vim'
 "let g:lens#animate = 0
@@ -405,8 +406,9 @@ map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 let g:incsearch#auto_nohlsearch = 1
-map n  <Plug>(incsearch-nohl-n)zz
-map N  <Plug>(incsearch-nohl-N)zz
+"TODO add toggle for zz after n
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
 map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
@@ -435,6 +437,8 @@ nnoremap <silent> <leader>Z :Goyo 60-5<CR>
 
 function! s:goyo_enter()
   set noshowmode
+  set nonumber
+  set norelativenumber
 endfunction
 function! s:goyo_leave()
   set showmode
