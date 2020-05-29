@@ -20,8 +20,12 @@ set notification-bg "#000"
 #set guioptions 0 # hide the status bar
 
 # Mappings
-map <C-e> scroll half-up
-map <C-d> toggle_page_mode
+map <S-d> toggle_page_mode
+map <C-e> scroll full-up
+map <C-d> scroll full-down
 map e scroll half-up
 map u scroll half-up
 map d scroll half-down
+map [ scroll full-up 
+map ] scroll full-down
+
