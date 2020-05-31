@@ -2,5 +2,6 @@
     "suggest.maxCompleteItemCount": 15,
     "python.setInterpreter": "/usr/bin/python",
     "python.jediEnabled": false,
-    "python.linting.enabled": false
+    "python.linting.enabled": false,
+    "xml.java.home": "/usr/lib/jvm/java-13-openjdk"
 }
