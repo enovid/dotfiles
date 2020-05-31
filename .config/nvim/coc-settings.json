@@ -3,5 +3,6 @@
     "python.setInterpreter": "/usr/bin/python",
     "python.jediEnabled": false,
     "python.linting.enabled": false,
-    "xml.java.home": "/usr/lib/jvm/java-13-openjdk"
+    "xml.java.home": "/usr/lib/jvm/java-13-openjdk",
+    "highlight.disableLanguages": ["pandoc", "vim"]
 }
