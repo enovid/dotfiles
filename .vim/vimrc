@@ -313,9 +313,15 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-"
+
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Mappings using CocList:
+" Find symbol of current document.
+nnoremap <silent> <Leader>v  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent> <Leader>s  :<C-u>CocList -I symbols<cr>
 
 
 "" BExec
@@ -388,9 +394,9 @@ let g:fzf_colors =
 
 "" ultiSnips
 " enable :Snippets command to search snippet descriptions
-command! -bar -bang Snippets call fzf#vim#snippets({'options': '-n ..'}, <bang>0)
-nnoremap <C-S> :Snippets<CR>
-nnoremap <Leader>s :Snippets<CR>
+"command! -bar -bang Snippets call fzf#vim#snippets({'options': '-n ..'}, <bang>0)
+"nnoremap <C-S> :Snippets<CR>
+"nnoremap <Leader>s :Snippets<CR>
 
 
 "" easymotion
@@ -461,7 +467,7 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 
 "" voom
-nnoremap <leader>V :Goyo!\|Voom python<CR>
+"nnoremap <leader>V :Goyo!\|Voom python<CR>
 
 
 "" pear-tree
@@ -813,7 +819,7 @@ nnoremap <Leader>[ :sp\|term<CR>
 
 
 "" Open vifm in builtin terminal
-nnoremap <Leader>v :AsyncRun -mode=terminal vifm .<CR><C-\><C-n><C-w>Ki
+"nnoremap <Leader>v :AsyncRun -mode=terminal vifm .<CR><C-\><C-n><C-w>Ki
 
 
 """"""""""""""""""""""""""""""""
