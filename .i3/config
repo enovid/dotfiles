@@ -27,8 +27,8 @@ font xft:URWGothic-Book 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty --listen-on unix:/tmp/mykitty
-#bindsym $mod+Return exec kitty --single-instance --listen-on unix:/tmp/mykitty
+#bindsym $mod+Return exec kitty --listen-on unix:/tmp/mykitty
+bindsym $mod+Return exec kitty --single-instance --listen-on unix:/tmp/mykitty
 
 # kill focused window
 bindsym $mod+Shift+q kill

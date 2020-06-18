@@ -1,6 +1,6 @@
 i3wm.focused:             #000000
-i3wm.focusedInactive:     #777777
-i3wm.unfocused:           #999999
+i3wm.focusedInactive:     #EEEEEE
+i3wm.unfocused:           #FFFFFF
 i3wm.textFocused:         #666666
 i3wm.textFocusedInactive: #AAAAAA
 i3wm.textUnfocused:       #666666
