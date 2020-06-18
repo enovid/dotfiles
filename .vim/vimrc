@@ -310,6 +310,7 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> <C-]> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -467,11 +468,10 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 
 "" voom
-"nnoremap <leader>V :Goyo!\|Voom python<CR>
-
+nnoremap <leader>V :Goyo!\|Voom python<CR>
 
 "" pear-tree
-imap <tab> <Plug>(PearTreeJump)
+imap <expr><tab> pear_tree#GetSurroundingPair() == [] ? "\<Tab>" : pear_tree#insert_mode#JumpOut()
 imap <S-Enter> <Plug>(PearTreeExpand)
 
 
@@ -649,6 +649,8 @@ set undodir=~/.vim/undodir
 " open vertical split to the right
 set splitright
 
+" Disable the default Vim startup message.
+set shortmess+=I
 
 "" GUI, cursor, font
 if has("gui_running")
@@ -684,8 +686,9 @@ endif
 
 
 "" Colorscheme (Active)
-set notermguicolors
-colorscheme sourcerer
+set background=light
+"set notermguicolors
+"colorscheme sourcerer
 
 
 """"""""""""""
@@ -786,6 +789,8 @@ augroup python_run_mappings
 augroup END
 " Macros
 let @p="A\<cr>import pdb; pdb.set_trace()\<esc>"
+let @b="Oimport pudb; pu.db\<esc>"
+noremap <Leader>b @b
 let @m="A\<cr>if __name__ == '__main__':\<esc>\<cr>\<tab>"
 let @n="A\import numpy as np\<cr>\import matplotlib.pyplot as plt\<cr>\import pandas as pd\<cr>\<esc>\<cr>\<tab>"
 
@@ -938,8 +943,8 @@ endfunction
 function! KittyUpdateTerminalColorscheme()
     let l:normal_fg = synIDattr(hlID('Normal'), 'fg')
     let l:normal_bg = synIDattr(hlID('Normal'), 'bg')
-    "silent call system('kitty @ --to ' .  shellescape('unix:/tmp/mykitty') . ' set-colors -c background=' . l:normal_bg . ' foreground=' . l:normal_fg)
-    silent call system('kitty @ set-colors -c background=' . l:normal_bg . ' foreground=' . l:normal_fg)
+    silent call system('kitty @ --to ' .  shellescape('unix:/tmp/mykitty') . ' set-colors -c background=' . l:normal_bg . ' foreground=' . l:normal_fg)
+    "silent call system('kitty @ set-colors -c background=' . l:normal_bg . ' foreground=' . l:normal_fg)
 endfunction
 
 " Set Kitty's cursor color to match current colorscheme
@@ -1182,3 +1187,14 @@ augroup compile_on_save_latex
     autocmd!
     autocmd FileType tex nnoremap <buffer> <Leader>w :w\|AsyncRun xelatex -interaction=nonstopmode %<CR>
 augroup END
+
+
+"" Remember and restore folds 
+" COMMENTED OUT DUE TO FT DETECT CONFLICT WITH FIRENVIM
+" Taken from: https://stackoverflow.com/a/37558470/10898386
+" Reason to add filetype detect: https://vi.stackexchange.com/questions/19326/vim-conceal-doesnt-work/19333#19333
+"augroup remember_folds
+    "autocmd!
+    "autocmd BufWinLeave ?* silent! mkview | filetype detect
+    "autocmd BufWinEnter ?* silent! loadview | filetype detect
+"augroup END
