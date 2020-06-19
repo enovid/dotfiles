@@ -62,8 +62,8 @@ Plug 'machakann/vim-sandwich'
 """ Auto comment
 Plug 'scrooloose/nerdcommenter'
 let g:NERDCustomDelimiters = {
-    \ 'markdown': { 'left': '#' },
-    \ 'pandoc': { 'left': '#' }
+    \ 'markdown': { 'left': '<!--', 'right': '-->' },
+    \ 'pandoc': { 'left': '<!--', 'right': '-->' }
 \ }
 
 """ Align multiple lines
