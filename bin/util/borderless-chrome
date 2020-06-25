@@ -1,0 +1,3 @@
+#!/bin/sh
+sleep 0.2;
+xdotool getactivewindow key --clearmodifiers F11 Super_L+Control_L+e;
