@@ -17,7 +17,7 @@ augroup TermHandling
   autocmd!
   " " Turn off line numbers etc
   autocmd TermOpen * setlocal listchars= nonumber norelativenumber
-  autocmd TermOpen * startinsert
+  "autocmd TermOpen * startinsert
   "autocmd TermOpen * tnoremap <Esc> <c-\><c-n>
   "autocmd! FileType fzf tnoremap <buffer> <Esc> <c-c>
 augroup END
