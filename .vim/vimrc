@@ -781,7 +781,8 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 augroup python_run_mappings
     autocmd!
     "autocmd FileType python nnoremap <Leader>r :w\|!python3 %<CR>
-    autocmd FileType python nnoremap <silent> <Leader>d :w\|AsyncRun -mode=terminal python3 %<CR>
+    "autocmd FileType python nnoremap <silent> <Leader>d :w\|AsyncRun -mode=terminal python3 %<CR>
+    autocmd FileType python nnoremap <silent> <Leader>d :w\|CocCommand python.execInTerminal<CR>
     autocmd FileType python nnoremap <silent> <Leader>R :AsyncRun -mode=terminal python3<CR>
     autocmd FileType python nnoremap <silent> <Leader>r :w\|Goyo!\|Bexec()<CR>
     autocmd FileType python vnoremap <silent> <Leader>d :w\|BexecVisual()<CR>
@@ -816,11 +817,15 @@ augroup END
 if has('nvim')
     " Mapping to enter normal mode
     tnoremap <C-\><C-\> <C-\><C-n>
+    " Exit and close terminal
     tnoremap <C-]><C-]> <C-\><C-n>:bd!<CR>
+    tnoremap <C-q> <C-\><C-n>:bd!<CR>
+    "" Scroll lines
+    "tnoremap <C-J>
 endif
 
 " Open terminal in horizontal split
-nnoremap <Leader>[ :sp\|term<CR>
+nnoremap <Leader>[ :sp\|term<CR>i
 
 
 "" Open vifm in builtin terminal
@@ -963,7 +968,7 @@ endfunction
 "" Functions called on changing colorscheme/filetype
 " Custom colorscheme modifications applied when colorscheme is changed
 function! s:colorscheme_customize() abort
-    call KittyUpdateTerminalColorscheme()
+    "call KittyUpdateTerminalColorscheme()
     highlight LineNr guibg=bg
     highlight CursorLineNr guibg=bg
 
