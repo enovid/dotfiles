@@ -1,0 +1,39 @@
+#!/bin/bash
+#
+# Set terminal colors using Kitty's remote control. 
+#
+#
+
+usage() { >&2 echo "Usage: kitty-set-theme [-h] [file]" ; exit 1 ; }
+
+# Path to Kitty config
+KDIR="$HOME/.config/kitty" 
+
+# Path to Kitty remote
+KREMOTE="unix:/tmp/mykitty"
+
+# Path to colorschemes
+CDIR="$HOME/.config/kitty/my-themes" 
+
+# Path to the colorscheme file set in kitty.conf
+KCOLORCONF="$HOME/.config/kitty/theme.conf"
+
+# Command to set new colors in Kitty
+SET="kitty @ --to $KREMOTE set-colors --all $KCOLORCONF" 
+#kitty @ set-colors --all ~/.config/kitty/theme.conf
+
+
+case $1 in
+    -h)
+        usage
+        ;;
+    *)
+        # Overwrite theme.conf with given file
+        # Example:
+        #   cp ~/.config/kitty/my-themes/iceberg-light.conf ~/.config/kitty/theme.conf
+        cp $CDIR/$1 $KCOLORCONF
+
+        # Apply changes
+        $SET
+esac
+
