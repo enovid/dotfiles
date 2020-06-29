@@ -1,0 +1,3 @@
+#!/bin/sh
+VOLUME=$(pamixer --get-volume-human)
+dunstify -t 1000 -h string:x-canonical-private-synchronous:volume "Vol $VOLUME"

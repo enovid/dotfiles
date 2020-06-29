@@ -1,0 +1,3 @@
+#!/bin/sh
+BRIGHTNESS=$(light -G)
+dunstify -t 1000 -h string:x-canonical-private-synchronous:brightness "Light ${BRIGHTNESS%.*}%"
