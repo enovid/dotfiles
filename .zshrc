@@ -79,6 +79,8 @@ export FZF_BASE=/usr/bin/fzf
 plugins=(
     git
     fzf
+    asdf
+    poetry
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -141,3 +143,13 @@ export MANWIDTH=999
 
 # gpg-agent
 export GPG_TTY=$(tty)
+
+# global FIFO for live preview in nnn
+export NNN_FIFO=/tmp/nnn.fifo
+# Keys to invoke plugins in nnn
+export NNN_PLUG='f:preview-tui'
+# Split direction for kitty panes (used for preview-tui split pane in nnn)
+export SPLIT='v'
+
+# poetry path
+export PATH=$PATH:/home/enovid/.poetry/bin
