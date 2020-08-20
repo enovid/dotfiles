@@ -18,6 +18,7 @@ Plug 'szymonmaszke/vimpyter'
 Plug 'wellle/context.vim'
 let g:context_enabled = 0
 let g:context_highlight_tag = '<hide>'
+Plug 'tpope/vim-abolish'
 
 "" Completion
 """ ultisnips
@@ -195,7 +196,7 @@ Plug 'machakann/vim-highlightedyank'
 let g:highlightedyank_highlight_duration = 500
 
 """ highlight color codes in text
-Plug 'ap/vim-css-color'
+"Plug 'ap/vim-css-color'
 
 """ manage colorschemes
 Plug 'lifepillar/vim-colortemplate'
@@ -333,7 +334,7 @@ nnoremap <silent> <Leader>s  :<C-u>CocList -I symbols<cr>
 
 "" BExec
 "close BExec_output window
-nnoremap <silent> <Leader>g :BexecCloseOut<CR>
+nnoremap <silent> <Leader>G :BexecCloseOut<CR>
 
 
 "" colorscheme manager
@@ -819,6 +820,10 @@ augroup java_run_mappings
     autocmd!
     autocmd FileType java nnoremap <Leader>d :call CompileRunGcc()<CR>
 augroup END
+
+
+"" SQL
+nnoremap <silent> <Leader>g :CocCommand sql.Format<CR>
 
 
 "" Neovim terminal
