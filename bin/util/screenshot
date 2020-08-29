@@ -1,2 +1,3 @@
 #!/bin/bash
 maim -su | xclip -selection clipboard -t image/png
+#maim -su ~/screenshots/$(date +%s).png
