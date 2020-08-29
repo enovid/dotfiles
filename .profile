@@ -6,3 +6,5 @@ export BROWSER=/usr/bin/google-chrome-stable
 export PATH=$PATH:$(printf '%s:' ${HOME}/bin/*/)
 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+export PATH="$HOME/.poetry/bin:$PATH"
