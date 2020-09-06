@@ -155,8 +155,7 @@ Plug 'metakirby5/codi.vim'
 
 """ Show stdout in buffer
 Plug 'fboender/bexec'
-let g:bexec_interpreter="/usr/bin/python"
-"let g:bexec_interpreter="/home/enovid/.env/bin/python3"
+let g:bexec_interpreter="/home/enovid/.asdf/shims/python"
 let g:bexec_splitdir='hor'
 let g:bexec_splitsize=''
 let g:bexec_outputscroll=1
@@ -175,11 +174,6 @@ let g:vim_printer_items = {
 
 
 "" Look and Feel
-""" center the window
-Plug 'jmckiern/vim-venter'
-let g:venter_disable_vertsplit = 1
-
-
 """ smooth scroll
 Plug 'psliwka/vim-smoothie'
 
@@ -460,8 +454,6 @@ nnoremap <silent> <leader>a :NV<CR>
 "" goyo
 nnoremap <silent> <leader>z :Goyo<CR>
 nnoremap <silent> <leader>Z :Goyo 60-5<CR>
-"nnoremap <silent> <leader>z :VenterToggle<CR>
-"nnoremap <silent> <leader>Z :Goyo<CR>
 
 function! s:goyo_enter()
   set noshowmode
@@ -802,7 +794,7 @@ let @p="A\<cr>import pdb; pdb.set_trace()\<esc>"
 let @b="Oimport pudb; pu.db\<esc>"
 noremap <Leader>b @b
 let @m="A\<cr>if __name__ == '__main__':\<esc>\<cr>\<tab>"
-let @n="A\import numpy as np\<cr>\import matplotlib.pyplot as plt\<cr>\import pandas as pd\<cr>\<esc>\<cr>\<tab>"
+let @n="A\import numpy as np;import matplotlib.pyplot as plt;import pandas as pd;\<ESC>"
 
 
 "" Java
