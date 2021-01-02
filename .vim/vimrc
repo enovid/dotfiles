@@ -19,6 +19,8 @@ Plug 'wellle/context.vim'
 let g:context_enabled = 0
 let g:context_highlight_tag = '<hide>'
 Plug 'tpope/vim-abolish'
+Plug 'puremourning/vimspector'
+let g:vimspector_enable_mappings = 'HUMAN'
 
 "" Completion
 """ ultisnips
@@ -126,7 +128,7 @@ let g:python_highlight_all = 1
 
 "" Fuzzy Finding
 """ fzf.vim
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 let g:fzf_command_prefix = 'Fzf'
 
@@ -170,6 +172,7 @@ let g:vim_printer_print_above_keybinding = '<leader>I'
 let g:vim_printer_items = {
       \ 'python': "print(f'{$}: \{{$}\}')",
       \ 'ipynb': "print(f'{$}: \{{$}\}')",
+      \ 'java': "System.out.println(\"{$}: \" + {$});",
       \ }
 
 
@@ -317,7 +320,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+"autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Mappings using CocList:
 " Find symbol of current document.
@@ -350,7 +353,8 @@ nnoremap <S-Up> :let &background = ( &background == "dark"? "light" : "dark" )<C
 
 "" fzf
 """ mappings
-nnoremap <silent> <leader>/ :cd %:h\|FzfRg<CR>
+"nnoremap <silent> <leader>/ :cd %:h\|FzfRg<CR>
+nnoremap <silent> <leader>/ :FzfRg<CR>
 nnoremap <silent> <leader>o :FzfFiles<CR>
 nnoremap <silent> <leader>O :FzfFiles ~<CR>
 nnoremap <silent> <leader>h :FzfHistory<CR>
@@ -687,7 +691,7 @@ endif
 
 
 "" Colorscheme (Active)
-set background=dark
+set background=light
 "set notermguicolors
 "colorscheme sourcerer
 
