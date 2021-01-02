@@ -37,6 +37,7 @@ endfunction
 
 " Use python filetype for jupyter notebook textareas
 au BufEnter localhost_*.txt set filetype=python
+au BufEnter data100.datahub.*.txt set filetype=python
 
 if exists('g:started_by_firenvim')
     set laststatus=0
@@ -64,3 +65,4 @@ let g:firenvim_config = {
 let fc = g:firenvim_config['localSettings']
 let fc['http://localhost:.*'] = {'takeover': 'always', 'priority': 1}
 let fc['https://binarysearch.io/*'] = {'takeover': 'always', 'priority': 1}
+let fc['https://data100.datahub.berkeley.edu/*'] = {'takeover': 'always', 'priority': 1}
