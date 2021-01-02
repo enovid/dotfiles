@@ -63,7 +63,7 @@ ZSH_THEME="theunraveler"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 # Set fzf installation directory path
-export FZF_BASE=/usr/bin/fzf
+export FZF_BASE=~/.vim/plugged/fzf/
 
 # Uncomment the following line to disable fuzzy completion
 # export DISABLE_FZF_AUTO_COMPLETION="true"
